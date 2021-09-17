@@ -1,3 +1,3 @@
 # Kynda
 
-Project C for Kynda
+Project C for Kynda.
