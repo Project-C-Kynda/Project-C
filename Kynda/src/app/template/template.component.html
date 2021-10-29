@@ -3,17 +3,18 @@
         <form class="template-form col-4">
             <p>Bewerk hierin uw template:</p>
             
-            <label for="template-title">Template title:</label>
-            <input type="text" id="template-title" name="template-title">
+            <label for="template-title" class="form-label">Template title:</label>
+            <input type="text" class="form-control" id="template-title" name="template-title" placeholder="Nieuwe template">
             
             <label for="template-text">Template text:</label>
-            <input type="text" id="template-text" name="template-text">
-            
+            <br>
+            <textarea class="form-control" class="form-control" id="template-text" name="template-text" placeholder="Typ hier de tekst wat bij uw template hoort" rows="4" cols="50" name="comment"></textarea>
+            <br>
             <input type="file" accept="image/*">
-            
+            <br><br>
             <label for="template-textfoto">Tekst onder foto</label>
-            <input type="text" id="template-textfoto" name="template-textfoto">
-            
+            <input type="text" class="form-control" id="template-textfoto" name="template-textfoto" placeholder="Typ hier de tekst wat onder de foto komt">
+            <br>
             <button class="btn btn-dark" type="button" onclick="updateTemplate()">Template opslaan</button>
         </form>
 
