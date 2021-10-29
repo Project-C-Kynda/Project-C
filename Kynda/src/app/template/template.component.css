@@ -1,3 +1,8 @@
-.template-form, .content{
-    margin-top: 1em;
+.template-form{
+    height: 100vh;
+    margin-left: -7vw;
+}
+
+h4{
+    border-bottom: 1px grey solid;
 }
