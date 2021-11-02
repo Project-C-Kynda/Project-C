@@ -1,21 +1,31 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <form class="template-form shadow col-4">
             <h4>Bewerk hierin uw template:</h4>
+
+            <div class="form-group">
+                <label for="template-title" class="form-label">Template title:</label>
+                <input type="text" class="form-control" id="template-title" name="template-title" placeholder="Nieuwe template">
+            </div>
+
+            <div class="form-group">
+                <label for="template-text">Template text:</label>
+                <textarea class="form-control" class="form-control" id="template-text" name="template-text" placeholder="Typ hier de tekst wat bij uw template hoort" rows="4" cols="50" name="comment"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" accept="image/*">
+                    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Kies een foto</label>
+                </div> 
+            </div>
             
-            <label for="template-title" class="form-label">Template title:</label>
-            <input type="text" class="form-control" id="template-title" name="template-title" placeholder="Nieuwe template">
-            
-            <label for="template-text">Template text:</label>
-            <br>
-            <textarea class="form-control" class="form-control" id="template-text" name="template-text" placeholder="Typ hier de tekst wat bij uw template hoort" rows="4" cols="50" name="comment"></textarea>
-            <br>
-            <input type="file" accept="image/*">
-            <br><br>
-            <label for="template-textfoto">Tekst onder foto</label>
-            <input type="text" class="form-control" id="template-textfoto" name="template-textfoto" placeholder="Typ hier de tekst wat onder de foto komt">
-            <br>
-            <button class="btn btn-dark" type="button" onclick="updateTemplate()">Template opslaan</button>
+            <div class="form-group">
+                <label for="template-textfoto">Tekst onder foto</label>
+                <input type="text" class="form-control" id="template-textfoto" name="template-textfoto" placeholder="Typ hier de tekst wat onder de foto komt">
+            </div>
+
+            <button class="btn btn-info" type="button" onclick="updateTemplate()">Template opslaan</button>
         </form>
 
         <div class="content col-8">
