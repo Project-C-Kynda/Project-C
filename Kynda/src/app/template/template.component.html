@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <form class="template-form shadow col-4">
+            <h4>Bewerk hierin uw template:</h4>
+            
+            <label for="template-title" class="form-label">Template title:</label>
+            <input type="text" class="form-control" id="template-title" name="template-title" placeholder="Nieuwe template">
+            
+            <label for="template-text">Template text:</label>
+            <br>
+            <textarea class="form-control" class="form-control" id="template-text" name="template-text" placeholder="Typ hier de tekst wat bij uw template hoort" rows="4" cols="50" name="comment"></textarea>
+            <br>
+            <input type="file" accept="image/*">
+            <br><br>
+            <label for="template-textfoto">Tekst onder foto</label>
+            <input type="text" class="form-control" id="template-textfoto" name="template-textfoto" placeholder="Typ hier de tekst wat onder de foto komt">
+            <br>
+            <button class="btn btn-dark" type="button" onclick="updateTemplate()">Template opslaan</button>
+        </form>
+
+        <div class="content col-8">
+            <header>
+                <img id="header-image" src="../../assets/images/Karameru.png" alt="karameru">
+                <h1 id="header-text">This is a Heading?</h1>
+            </header>
+
+            <section class="middle-section">
+                <p id="middle-text">
+                    "Lorem ipsum dolor sit amet, 
+                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident,
+                    sunt in culpa qui officia deserunt mollit anim id est laborum."
+                </p>
+            </section> 
+
+            <footer>
+                <img id="footer-image" src="../../assets/images/Karameru.png" alt="I am Karameru">
+                <p id="bottom-text">"Lorem ipsum dolor sit amet"</p>
+            </footer>
+        </div>
+    </div>
+</div>

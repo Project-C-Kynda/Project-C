@@ -1,0 +1,16 @@
+@startuml
+start
+:Kynda medewerker klikt op Dashboard Aanpassen;
+if (Accounts bestaan?) then (yes)
+    #palegreen:Kynda medewerker kiest een account om
+aan te passen;
+    :Kynda medewerker kiest een kleur en logo voor het account;
+    :Het dashboard wordt aangepast naar de huisstijl van het bedrijf;
+else (no)
+    #Pink:
+Kynda medewerker krijgt een waarschuwing 
+dat er op dit moment geen accounts bestaan;
+    kill
+endif
+stop
+@enduml

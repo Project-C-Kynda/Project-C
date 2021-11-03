@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FotoUploadComponent } from './foto-upload/foto-upload.component';
+import { TemplateComponent } from './template/template.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FotoUploadComponent
+    FotoUploadComponent,
+    TemplateComponent
   ],
   imports: [
     BrowserModule,
