@@ -5,7 +5,7 @@ import { TemplateComponent } from './template/template.component';
 
 const routes: Routes = [
   { path: '',
-    redirectTo: '/photoUpload',
+    redirectTo: '/template',
     pathMatch: 'full'
   },
   {path: "template", component: TemplateComponent},
