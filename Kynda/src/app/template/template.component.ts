@@ -8,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class TemplateComponent implements OnInit {
 
   constructor() { }
+  headings : any;
+  paragraphs : any;
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    this.headings = document.querySelectorAll('h1');
+    this.paragraphs = document.querySelectorAll('p');
   }
+
+
 
 }
