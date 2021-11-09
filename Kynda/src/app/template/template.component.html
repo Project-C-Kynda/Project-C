@@ -1,12 +1,12 @@
 <div class="container-fluid">
     <div class="row">
         <form class="template-form shadow col-4">
-            <h4>Bewerk hierin uw template:</h4>
+            <h4 class='editor'>Bewerk hierin uw template:</h4>
 
+            <label for="template-title" class="form-label">Template headings:</label>
             <div *ngFor="let heading of headings; let i = index">
                 <div class="form-group">
-                    <label for="template-title" class="form-label">Template title:</label>
-                    <input type="text" class="form-control" id="template-title" name="template-title" placeholder="Nieuwe template" [(ngModel)]='headings[i].innerText'>
+                    <input type="text" class="form-control" id="template-title" name="template-title{{i}}" placeholder="Nieuwe template" [(ngModel)]='headings[i].innerText'>
                 </div>
             </div>
 
