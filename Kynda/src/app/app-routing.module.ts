@@ -10,7 +10,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {path: "template", component: TemplateComponent},
-  {path: "photoUpload", component: FotoUploadComponent}
+  {path: "photoUpload", component: FotoUploadComponent},
   {path: "image-library", component: ImageLibraryComponent}
 ];
 
