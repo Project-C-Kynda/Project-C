@@ -1,4 +1,4 @@
-
+/*
 // This function will handle all the changes that will be made on the template.
 function updateTemplate() 
 {
@@ -25,3 +25,4 @@ function updateTemplate()
         bottomText.innerHTML = templateBottomInput;
     }
 }
+*/
