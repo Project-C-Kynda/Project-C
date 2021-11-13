@@ -9,9 +9,11 @@ const routes: Routes = [
     redirectTo: '/template',
     pathMatch: 'full'
   },
+
   {path: "template", component: TemplateComponent},
   {path: "photoUpload", component: FotoUploadComponent},
-  {path: "image-library", component: ImageLibraryComponent}
+  {path: "image-library", component: ImageLibraryComponent},
+  
 ];
 
 @NgModule({
