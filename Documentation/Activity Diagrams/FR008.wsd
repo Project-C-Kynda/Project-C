@@ -1,0 +1,15 @@
+@startuml
+start
+:Gebruiker klikt op wachtwoord aanpassen;
+if (Klant geregistreerd?) then (yes)
+    #palegreen:Gebruiker krijgt de optie om zijn wachtwoord 
+aan te passen;
+    :Gebruiker voert een nieuwe wachtwoord in;
+    :Wachtwoord wordt toegevoegd aan account;
+else (no)
+    #Pink:Gebruiker krijgt een waarschuwing 
+dat het account niet bestaat;
+    kill
+endif
+stop
+@enduml

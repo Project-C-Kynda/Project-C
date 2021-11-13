@@ -1,0 +1,11 @@
+.template-form{
+    height: 100vh;
+}
+
+.content{
+    padding-left: 5vw;
+}
+
+h4{
+    border-bottom: 1px grey solid;
+}
