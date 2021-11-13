@@ -1,0 +1,21 @@
+.container{
+    margin: .2em;
+    padding: 0;
+}
+
+.container ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.links img{
+    height: 300px;
+    margin: .5em;
+}
+
+.links img:hover{
+    outline-style: outset;
+    outline-width: 4px;
+    outline-color:dimgrey;
+}
