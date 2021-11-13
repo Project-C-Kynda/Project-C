@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FotoUploadComponent } from './foto-upload/foto-upload.component';
 import { TemplateComponent } from './template/template.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
 
