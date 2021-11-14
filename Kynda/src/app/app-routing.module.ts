@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TemplateComponent } from './template/template.component';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
 
 const routes: Routes = [
@@ -10,7 +11,7 @@ const routes: Routes = [
   },
 
   {path: "template", component: TemplateComponent},
-  {path: "photoUpload", component: FotoUploadComponent},
+  {path: "photoUpload", component: PhotoUploadComponent},
   {path: "image-library", component: ImageLibraryComponent},
   
 ];
