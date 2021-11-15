@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from '../database/services/rest.service';
 
 @Component({
   selector: 'app-template',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateComponent implements OnInit {
 
-  constructor() { }
+  Companies:any = [];
+
+  constructor(private restService: RestService) { }
 
   ngOnInit(): void {
+    this.restService.GetCompanies().subscribe(res => {
+      console.log(res);
+      this.Companies = res;
+    });
   }
 
 }
