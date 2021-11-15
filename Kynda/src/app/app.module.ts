@@ -9,6 +9,7 @@ import { TemplateComponent } from './template/template.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
 import { DatabaseComponent } from './database/database.component';
 import { LoginComponent } from './login/login.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoginComponent } from './login/login.component';
     TemplateComponent,
     ImageLibraryComponent,
     DatabaseComponent,
-    LoginComponent
+    LoginComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
