@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { TemplateComponent } from './template/template.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
 import { DatabaseComponent } from './database/database.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateComponent,
     ImageLibraryComponent,
-    DatabaseComponent
+    DatabaseComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
