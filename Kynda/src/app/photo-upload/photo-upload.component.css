@@ -1,0 +1,10 @@
+.formUpload{
+    width: 35vw;
+    height: 25vh;
+    margin-left: 30vw;
+    margin-top: 5vh;
+}
+
+h4{
+    border-bottom: 1px grey solid;
+}

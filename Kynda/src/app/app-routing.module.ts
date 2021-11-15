@@ -6,7 +6,7 @@ import { ImageLibraryComponent } from './image-library/image-library.component';
 
 const routes: Routes = [
   { path: '',
-    redirectTo: '/template',
+    redirectTo: '/photoUpload',
     pathMatch: 'full'
   },
 
