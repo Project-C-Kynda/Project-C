@@ -8,7 +8,7 @@
             Ongeldige gebruikersnaam
         </div>
     </div>
-    <div class="form-group">
+    <!--<div class="form-group">
         <label for="passwordValidation">Wachtwoord</label>
         <input type="text" class="form-control" id="passwordValidation" formControlName="password" 
             [ngClass]="{'is-invalid':password.errors && (password.touched || password.dirty), 'is-valid':password.valid}">
@@ -16,7 +16,7 @@
            <p *ngIf="password.errors?.minlength">Het wachtwoord moet tenminste 8 tekens lang zijn.</p>
            <p *ngIf="password.errors?.required">Dit veld is verplicht</p>
         </div>
-    </div>
+    </div> -->
     <div class="form-group">
         <label for="emailValidation">Email</label>
         <input type="email" class="form-control" id="emailValidation" formControlName="emailAddress" 
