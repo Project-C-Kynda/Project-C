@@ -5,6 +5,7 @@ import { DatabaseComponent } from './database/database.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
+import { CompanyAccountComponent } from './account/company-account/company-account.component';
 
 const routes: Routes = [
   { path: '',
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "image-library", component: ImageLibraryComponent},
   {path: "login", component: LoginComponent},
   {path: "account", component: AccountComponent},
+  {path: "company-account", component: CompanyAccountComponent},
 ];
 
 @NgModule({
