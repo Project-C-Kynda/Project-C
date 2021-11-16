@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RestService } from '../database/services/rest.service';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  User: any = [];
   login!: FormGroup;
 
   userName!: FormControl;
   password!: FormControl;
 
-  constructor() { }
+  constructor(private restservice: RestService) { }
 
   ngOnInit() {
     this.userName = new FormControl('', Validators.required);
@@ -27,4 +29,22 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  checkUser(name: string, pass: string) {
+    this.restservice.getUser(name)
+      .subscribe(data => {
+        console.log(data);
+        this.User = data;
+        if(this.User.length >= 1) {
+          if (this.User[0].password == pass)
+          {
+            console.log("Pass!!");
+          }
+          else{
+            console.log("Fail");
+          }
+        } else {
+            console.log("user not found!");
+        }
+      })
+  }
 }

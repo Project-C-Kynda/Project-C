@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+
 import { Company } from '../models/company';
+import { Image } from '../models/image';
+import { User } from '../models/user';
+
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable , throwError } from 'rxjs';
-import { Image } from '../models/image';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +22,10 @@ export class RestService {
 
   GetCompanies() {
     return this.httpClient.get(`${this.REST_API}`);
+  }
+
+  getUser(accName:String) {
+    return this.httpClient.get(`${this.REST_API}/users/${accName}`);
   }
 
   AddImage(image:Image): Observable<any> {
