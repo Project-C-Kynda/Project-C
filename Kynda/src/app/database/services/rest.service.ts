@@ -25,7 +25,7 @@ export class RestService {
   }
 
   getUser(accName:String) {
-    return this.httpClient.get(`${this.REST_API}/users/${accName}`);
+    return this.httpClient.get(`${this.REST_API}/user/${accName}`);
   }
 
   AddImage(image:Image): Observable<any> {

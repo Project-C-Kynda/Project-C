@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RestService } from '../database/services/rest.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { RestService } from '../database/services/rest.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
+  validationMessage!: string;
 
   User: any = [];
   login!: FormGroup;
@@ -15,7 +18,7 @@ export class LoginComponent implements OnInit {
   userName!: FormControl;
   password!: FormControl;
 
-  constructor(private restservice: RestService) { }
+  constructor(private restservice: RestService, private router: Router) { }
 
   ngOnInit() {
     this.userName = new FormControl('', Validators.required);
@@ -29,6 +32,7 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  
   checkUser(name: string, pass: string) {
     this.restservice.getUser(name)
       .subscribe(data => {
@@ -37,13 +41,17 @@ export class LoginComponent implements OnInit {
         if(this.User.length >= 1) {
           if (this.User[0].password == pass)
           {
-            console.log("Pass!!");
+            this.validationMessage = "";
+            this.router.navigate(['/template'])
+            return this.validationMessage;
           }
           else{
-            console.log("Fail");
+            this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
+            return this.validationMessage;
           }
         } else {
-            console.log("user not found!");
+          this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
+          return this.validationMessage;
         }
       })
   }

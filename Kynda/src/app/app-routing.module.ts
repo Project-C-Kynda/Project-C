@@ -9,7 +9,7 @@ import { CompanyAccountComponent } from './account/company-account/company-accou
 
 const routes: Routes = [
   { path: '',
-    redirectTo: '/template',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {path: "template", component: TemplateComponent},
