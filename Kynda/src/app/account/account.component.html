@@ -1,0 +1,28 @@
+<form class="needs-validation" [formGroup]="userForm" novalidate>
+    <h2>Nieuw account aanmaken</h2>
+    <div class="form-group">
+        <label for="usernameValidation">Gebruikersnaam</label>
+        <input [(ngModel)]="user.accountname" type="text" class="form-control" id="usernameValidation" formControlName="username" 
+            [ngClass]="{'is-invalid':username.errors && (username.touched || username.dirty), 'is-valid':username.valid}" />
+        <div class="invalid-feedback">
+            Ongeldige gebruikersnaam
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="emailValidation">Email</label>
+        <input type="email" class="form-control" id="emailValidation" [(ngModel)]="user.emailaddress" formControlName="emailAddress" 
+            [ngClass]="{'is-invalid':emailAddress.errors && (emailAddress.touched || emailAddress.dirty), 'is-valid':emailAddress.valid}" />
+        <div class="invalid-feedback">
+            <p *ngIf="emailAddress.errors?.required">Dit veld is verplicht</p>
+            <p *ngIf="emailAddress.errors?.pattern">Vul een geldig email adres in</p>
+        </div>
+    </div>
+    <div  class="form-group">
+        <label for="companyValidation">Bedrijf</label>
+        <select class="form-control custom-select" (change)="changeValue($event)">
+            <option *ngFor="let c of companies" id="companyId">{{c.name}}</option>
+        </select>
+
+    </div>
+    <button type="submit" class="btn btn-info" (click)="makeUser()">Account aanmaken</button>
+</form>
