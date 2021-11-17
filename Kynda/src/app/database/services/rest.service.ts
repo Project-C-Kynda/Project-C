@@ -21,7 +21,7 @@ export class RestService {
   constructor(private httpClient: HttpClient) { }
 
   GetCompanies() {
-    return this.httpClient.get(`${this.REST_API}`);
+    return this.httpClient.get(`${this.REST_API}/companies`);
   }
 
   getUser(accName:String) {
