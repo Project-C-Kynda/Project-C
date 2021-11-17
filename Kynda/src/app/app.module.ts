@@ -6,13 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateComponent } from './template/template.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
+import { TemplateUploadComponent } from './template-upload/template-upload.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateComponent,
-    ImageLibraryComponent
+    ImageLibraryComponent,
+    TemplateUploadComponent
   ],
   imports: [
     BrowserModule,
