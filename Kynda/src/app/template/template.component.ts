@@ -9,8 +9,9 @@ import { HttpClient } from '@angular/common/http';
 export class TemplateComponent implements OnInit {
 
   editorParts : any;
-  button : any;
-  inputBoxFileNaam : any;
+  selectorParts: any;
+  //button : any;
+  //inputBoxFileNaam : any;
   inputFileNaam : any;
 
   loadedHtmlFile : any;
@@ -24,7 +25,7 @@ export class TemplateComponent implements OnInit {
   
   ngOnInit(): void 
   {
-    this.editorParts = document.getElementById('editor_parts');
+    this.editorParts = document.getElementById('editor-parts');
     this.editorParts.style.display = 'none';
   }
 
@@ -37,10 +38,13 @@ export class TemplateComponent implements OnInit {
           .subscribe((data : any) => {
               this.httpString = data;
               this.htmlFromString(this.httpString)
-              this.inputBoxFileNaam = document.getElementById('file_naam');
-              this.button = document.getElementById('load_button')
-              this.button.remove();
-              this.inputBoxFileNaam.remove();
+              this.selectorParts = document.getElementById("selector-parts")
+              this.selectorParts.remove();
+              
+              //this.inputBoxFileNaam = document.getElementById('file_naam');
+              //this.button = document.getElementById('load_button')
+              //this.button.remove();
+              //this.inputBoxFileNaam.remove();
               this.editorParts.style.display = 'initial';
           }
       );
