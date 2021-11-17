@@ -11,13 +11,13 @@ import { RestService } from '../database/services/rest.service';
 export class AccountComponent implements OnInit {
 
   selectedOption!: string;
-
+  id: any = 0;
   companies: any = [];
 
   users!: User[];
   user = new User();
 
-  addUser!: FormGroup;
+  userForm!: FormGroup;
   username!: FormControl;
   emailAddress!: FormControl;
   company!: FormControl;
@@ -30,7 +30,7 @@ export class AccountComponent implements OnInit {
     this.emailAddress = new FormControl('',[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
     this.company = new FormControl('',Validators.required);
 
-    this.addUser =  new FormGroup({
+    this.userForm =  new FormGroup({
       'username': this.username,
       'emailAddress': this.emailAddress,
       'company': this.company
@@ -40,13 +40,14 @@ export class AccountComponent implements OnInit {
   }
   
   changeValue(e: any): void {
-    console.log(e.target.value);
+    this.id = this.companies.find(function (c: { name: any; }) {
+        return c.name == e.target.value;
+      });
   }
 
   getCompanies(){
     this.restservice.GetCompanies()
       .subscribe(data => {
-        console.log(data);
         this.companies = data;
       }
       )
@@ -77,9 +78,18 @@ export class AccountComponent implements OnInit {
 
   makeUser()
   {
+    this.user.companyid = this.id.id;
     this.user.password =  this.generatePassword(8);
-    console.log(this.user.password);
-    console.log(this.user.accountname);
-    console.log(this.user.emailaddress);
+    this.user.roleid = 2;
+    this.addUser();
   }
+
+  addUser()
+  {
+    this.restservice.AddUser(this.user)
+    .subscribe(data => {
+      console.log(data);
+    })
+  }  
 }
+

@@ -35,6 +35,13 @@ export class RestService {
     return this.httpClient.post(`${this.REST_API}/image`, body, {'headers':headers})
   }
 
+  AddUser(user:User): Observable<any> {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(user);
+    console.log(body);
+    return this.httpClient.post(`${this.REST_API}/user`, body, {'headers':headers})
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) 
