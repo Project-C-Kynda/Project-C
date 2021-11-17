@@ -1,0 +1,35 @@
+@{
+    var testName = Request["testName"];
+    var testEmail = Request["testEmail"];
+    var testRequest = Request["testRequest"];
+    var errorMessage = "";
+    var debuggingFlag = false;
+    try {
+        WebMail.SmtpServer = "TODO";
+        WebMail.SmtpPort = "TODO";
+        WebMail.UserName = "TODO";
+        WebMail.Password = "TODO";
+        WebMail.From = "test@mail.com";
+
+        //Send email
+        WebMail.Send(to: testEmail,
+            subject: "Test request from - " + testName,
+            body: testRequest
+        );
+    }
+    catch(Exception ex) {
+        errorMessage = ex.Message;
+    }
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test mail</title>
+    </head>
+    <body>
+        <p>
+            bla bla bla
+        </p>
+    </body>
+</html>
