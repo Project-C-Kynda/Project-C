@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { TemplateComponent } from './template/template.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
 import { DatabaseComponent } from './database/database.component';
-import { MailpageComponent } from './mailpage/mailpage.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
@@ -20,7 +19,6 @@ import { CompanyAccountComponent } from './account/company-account/company-accou
     TemplateComponent,
     ImageLibraryComponent,
     DatabaseComponent,
-    MailpageComponent,
     LoginComponent,
     AccountComponent,
     CompanyAccountComponent

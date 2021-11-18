@@ -6,7 +6,6 @@ import { ImageLibraryComponent } from './image-library/image-library.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
-import { MailpageComponent } from './mailpage/mailpage.component';
 
 const routes: Routes = [
   { path: '',
@@ -16,7 +15,6 @@ const routes: Routes = [
   {path: "template", component: TemplateComponent},
   {path: "database", component: DatabaseComponent},
   {path: "image-library", component: ImageLibraryComponent},
-  {path: "mailpage", component: MailpageComponent},
   {path: "login", component: LoginComponent},
   {path: "account", component: AccountComponent},
   {path: "company-account", component: CompanyAccountComponent},
