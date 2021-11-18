@@ -3,9 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { TemplateComponent } from './template/template.component';
 import { DatabaseComponent } from './database/database.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
+<<<<<<< HEAD
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
+=======
+import { TemplateUploadComponent } from './template-upload/template-upload.component';
+>>>>>>> templatesinvullen
 
 const routes: Routes = [
   { path: '',
@@ -13,11 +17,16 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {path: "template", component: TemplateComponent},
+<<<<<<< HEAD
   {path: "database", component: DatabaseComponent},
   {path: "image-library", component: ImageLibraryComponent},
   {path: "login", component: LoginComponent},
   {path: "account", component: AccountComponent},
   {path: "company-account", component: CompanyAccountComponent},
+=======
+  {path: "image-library", component: ImageLibraryComponent},
+  {path: "template-upload", component: TemplateUploadComponent}
+>>>>>>> templatesinvullen
 ];
 
 @NgModule({
