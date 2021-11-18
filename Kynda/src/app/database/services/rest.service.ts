@@ -24,6 +24,13 @@ export class RestService {
     return this.httpClient.get(`${this.REST_API}/companies`);
   }
 
+  AddCompany(company: Company): Observable<any> {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(company);
+    console.log(body);
+    return this.httpClient.post(`${this.REST_API}/company`, body, {'headers':headers})
+  }
+
   getUser(accName:String) {
     return this.httpClient.get(`${this.REST_API}/user/${accName}`);
   }

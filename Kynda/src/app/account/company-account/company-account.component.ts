@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Company } from 'src/app/database/models/company';
+import { RestService } from 'src/app/database/services/rest.service';
 
 @Component({
   selector: 'app-company-account',
@@ -8,12 +10,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CompanyAccountComponent implements OnInit {
 
+  company =  new Company();
+  manual: any;
   addCompany!: FormGroup;
 
   companyName!: FormControl;
   styleguide!: FormControl;
 
-  constructor() { }
+  constructor(private restservice: RestService) { }
 
   ngOnInit() {
     this.companyName = new FormControl('',Validators.required);
@@ -27,4 +31,24 @@ export class CompanyAccountComponent implements OnInit {
     )
   }
 
+  getFileDetails(event: any)
+  {
+    for (var i = 0; i < event.target.files.length; i++) { 
+      this.manual = event.target.files[i].name;
+    }
+  }
+
+  makeCompany()
+  {
+    this.company.totaldownloads = 0;
+    this.company.manual = this.manual;
+  }
+
+  uploadCompany(){
+    this.makeCompany();
+    this.restservice.AddCompany(this.company)
+    .subscribe(data => {
+      console.log(data);
+    })
+  }
 }
