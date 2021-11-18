@@ -19,7 +19,6 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "account", component: AccountComponent},
   {path: "company-account", component: CompanyAccountComponent},
-  {path: "image-library", component: ImageLibraryComponent},
   {path: "template-upload", component: TemplateUploadComponent}
 ];
 
