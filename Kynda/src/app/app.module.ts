@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { FotoUploadComponent } from './foto-upload/foto-upload.component';
 import { TemplateComponent } from './template/template.component';
 import { DatabaseComponent } from './database/database.component';
+import { ImageLibraryComponent } from './image-library/image-library.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FotoUploadComponent,
     TemplateComponent,
-    DatabaseComponent
+    DatabaseComponent,
+    ImageLibraryComponent
   ],
   imports: [
     BrowserModule,
