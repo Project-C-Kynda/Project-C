@@ -1,5 +1,5 @@
 export class Company {
-    _id!: String;
+    _id!: Number;
     name!: String;
     totaldownloads!: Number;
     manual!: String;

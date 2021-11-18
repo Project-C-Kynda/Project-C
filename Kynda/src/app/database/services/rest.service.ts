@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+
 import { Company } from '../models/company';
+import { Image } from '../models/image';
+import { User } from '../models/user';
+
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable , throwError } from 'rxjs';
-import { Image } from '../models/image';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +21,11 @@ export class RestService {
   constructor(private httpClient: HttpClient) { }
 
   GetCompanies() {
-    return this.httpClient.get(`${this.REST_API}`);
+    return this.httpClient.get(`${this.REST_API}/companies`);
+  }
+
+  getUser(accName:String) {
+    return this.httpClient.get(`${this.REST_API}/user/${accName}`);
   }
 
   AddImage(image:Image): Observable<any> {
@@ -25,6 +33,17 @@ export class RestService {
     const body = JSON.stringify(image);
     console.log(body);
     return this.httpClient.post(`${this.REST_API}/image`, body, {'headers':headers})
+  }
+
+  AddUser(user:User): Observable<any> {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(user);
+    console.log(body);
+    return this.httpClient.post(`${this.REST_API}/user`, body, {'headers':headers})
+  }
+
+  SendMail(): Observable<any> {
+    return this.httpClient.get(`${this.REST_API}/sendmail`)
   }
 
   handleError(error: HttpErrorResponse) {
