@@ -91,5 +91,14 @@ export class AccountComponent implements OnInit {
       console.log(data);
     })
   }  
+  
+//===================EMAIL===================
+  sendMail()
+  {
+    this.restservice.SendMail()
+    .subscribe(data => {
+      console.log(data);
+    })
+  }
 }
 
