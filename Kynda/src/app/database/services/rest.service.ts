@@ -42,6 +42,10 @@ export class RestService {
     return this.httpClient.post(`${this.REST_API}/image`, body, {'headers':headers})
   }
 
+  GetImages(): Observable<any> {
+    return this.httpClient.get(`${this.REST_API}/images`);
+  }
+
   AddUser(user:User): Observable<any> {
     const headers = {'content-type': 'application/json'};
     const body = JSON.stringify(user);

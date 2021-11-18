@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IMAGE } from './image-interface';
+import { Image } from '../database/models/image';
+import { RestService } from '../database/services/rest.service';
 
 @Component({
   selector: 'app-image-library',
@@ -8,10 +9,18 @@ import { IMAGE } from './image-interface';
 })
 export class ImageLibraryComponent implements OnInit {
 
-  images = IMAGE;
-  constructor() { }
+  images!: Image[];
+  image = new Image();
+  constructor(private restservice:RestService) { }
 
   ngOnInit(): void {
+    this.getImages();
   }
 
+  getImages(){
+    this.restservice.GetImages().subscribe(data =>{
+      this.images = data;
+      console.log(this.images)
+    })
+  }
 }
