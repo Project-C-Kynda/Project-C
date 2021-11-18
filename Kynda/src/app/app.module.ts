@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +26,7 @@ import { TemplateUploadComponent } from './template-upload/template-upload.compo
     LoginComponent,
     AccountComponent,
     CompanyAccountComponent,
-    TemplateUploadComponent
+    TemplateUploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +34,7 @@ import { TemplateUploadComponent } from './template-upload/template-upload.compo
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
