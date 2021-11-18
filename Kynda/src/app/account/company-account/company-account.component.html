@@ -15,5 +15,10 @@
             <label for="customFileLangHTML"></label>
           </div>
     </div>
-    <button type="submit" class="btn btn-info" (click)="uploadCompany()">Bedrijfsaccount aanmaken</button>
+    <button type="submit" class="btn btn-info" [disabled]="addCompany.invalid" (click)="uploadCompany()">Bedrijfsaccount aanmaken</button>
+    <div class="form-group">
+        <div class="alert alert-success" *ngIf="isShown" role="alert">
+            <h4 class="alert-heading">Account is aangemaakt!</h4>
+        </div>
+    </div>
 </form>

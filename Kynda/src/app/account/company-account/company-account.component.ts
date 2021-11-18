@@ -10,6 +10,7 @@ import { RestService } from 'src/app/database/services/rest.service';
 })
 export class CompanyAccountComponent implements OnInit {
 
+  isShown: boolean = false;
   company =  new Company();
   manual: any;
   addCompany!: FormGroup;
@@ -38,10 +39,15 @@ export class CompanyAccountComponent implements OnInit {
     }
   }
 
+  toggleShow() {
+    this.isShown = ! this.isShown;
+  }
+
   makeCompany()
   {
     this.company.totaldownloads = 0;
     this.company.manual = this.manual;
+    this.toggleShow();
   }
 
   uploadCompany(){
