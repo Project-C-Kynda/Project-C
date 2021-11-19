@@ -53,6 +53,10 @@ export class RestService {
     return this.httpClient.post(`${this.REST_API}/user`, body, {'headers':headers})
   }
 
+  SendMail(): Observable<any> {
+    return this.httpClient.get(`${this.REST_API}/sendmail`)
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) 
