@@ -4,7 +4,7 @@ import { Company } from '../models/company';
 import { Image } from '../models/image';
 import { User } from '../models/user';
 
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable , throwError } from 'rxjs';
 
@@ -24,6 +24,13 @@ export class RestService {
     return this.httpClient.get(`${this.REST_API}/companies`);
   }
 
+  AddCompany(company: Company): Observable<any> {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(company);
+    console.log(body);
+    return this.httpClient.post(`${this.REST_API}/company`, body, {'headers':headers})
+  }
+
   getUser(accName:String) {
     return this.httpClient.get(`${this.REST_API}/user/${accName}`);
   }
@@ -35,6 +42,10 @@ export class RestService {
     return this.httpClient.post(`${this.REST_API}/image`, body, {'headers':headers})
   }
 
+  GetImages(): Observable<any> {
+    return this.httpClient.get(`${this.REST_API}/images`);
+  }
+
   AddUser(user:User): Observable<any> {
     const headers = {'content-type': 'application/json'};
     const body = JSON.stringify(user);
@@ -42,11 +53,13 @@ export class RestService {
     return this.httpClient.post(`${this.REST_API}/user`, body, {'headers':headers})
   }
 
-  UploadFile(formData: FormData): Observable<any> {
-    const headers = {'content-type': 'application/json'};
-    const body = JSON.stringify(formData);
-    console.log(body);
-    return this.httpClient.post(`${this.REST_API}/upload-file`, body, {'headers':headers})
+  UploadFile(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const req = new HttpRequest('POST', `${this.REST_API}/upload-file`, formData, {
+      responseType: 'json'
+    });
+    return this.httpClient.request(req);
   }
 
   SendMail(): Observable<any> {
