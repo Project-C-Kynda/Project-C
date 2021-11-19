@@ -1,4 +1,16 @@
-form{
-    width: 30vw;
-    margin-left: 35vw;
+.card{
+    width: 40vw;
+    height: 60vh;
+    margin-left: 30vw;
+    padding: 2vw;
+}
+
+.background{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 15vh;
+    background-image: 
+        linear-gradient(rgb(255, 0, 186), transparent), 
+        linear-gradient(93deg, transparent, rgba(19, 43, 200, 0.89)), 
+        linear-gradient(60deg, rgb(210, 46, 18), transparent);
 }

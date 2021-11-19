@@ -1,4 +1,13 @@
-form{
-    width: 30vw;
-    margin-left: 35vw;
+.card{
+    width: 50vw;
+    height: 70vh;
+    margin-left: 25vw;
+    padding: 2vw;
+}
+
+.background{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 15vh;
+    background-color: #f399c0;
 }
