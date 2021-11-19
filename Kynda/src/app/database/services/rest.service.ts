@@ -42,6 +42,13 @@ export class RestService {
     return this.httpClient.post(`${this.REST_API}/user`, body, {'headers':headers})
   }
 
+  UploadFile(formData: FormData): Observable<any> {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(formData);
+    console.log(body);
+    return this.httpClient.post(`${this.REST_API}/upload-file`, body, {'headers':headers})
+  }
+
   SendMail(): Observable<any> {
     return this.httpClient.get(`${this.REST_API}/sendmail`)
   }
