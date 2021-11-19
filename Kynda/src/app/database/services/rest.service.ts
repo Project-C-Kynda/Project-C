@@ -4,7 +4,7 @@ import { Company } from '../models/company';
 import { Image } from '../models/image';
 import { User } from '../models/user';
 
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable , throwError } from 'rxjs';
 
@@ -51,6 +51,15 @@ export class RestService {
     const body = JSON.stringify(user);
     console.log(body);
     return this.httpClient.post(`${this.REST_API}/user`, body, {'headers':headers})
+  }
+
+  UploadFile(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const req = new HttpRequest('POST', `${this.REST_API}/upload-file`, formData, {
+      responseType: 'json'
+    });
+    return this.httpClient.request(req);
   }
 
   SendMail(): Observable<any> {
