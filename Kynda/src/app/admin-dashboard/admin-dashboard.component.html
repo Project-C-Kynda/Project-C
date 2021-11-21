@@ -6,29 +6,31 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" [routerLink]="['/image-library']" routerLinkActive="router-link-active">Template toevoegen</a>
+        <a class="nav-link" [routerLink]="['/template-upload']" routerLinkActive="router-link-active">Template toevoegen</a>
         <a class="nav-link" [routerLink]="['/company-account']" routerLinkActive="router-link-active">Bedrijfsaccount toevoegen</a>
         <a class="nav-link" [routerLink]="['/account']" routerLinkActive="router-link-active" >Gebruikersaccount toevoegen</a>
       </div>
     </div>
   </nav>
 
-<div class="content">
-  <ul class="list-group listOfCompanies">
-    <h2 class="text-center">Bedrijven</h2>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      A list item
-      <span class="badge badge-secondary badge-pill">14</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      A second list item
-      <span class="badge badge-secondary badge-pill">2</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      A third list item
-      <span class="badge badge-secondary badge-pill">1</span>
-    </li>
-  </ul>
 
-  
-</div>  
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="tableHeading">Bedrijf</th>
+        <th class="tableHeading">Aantal downloads</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let company of companies | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };">
+        <th scope="row">{{company.name}}</th>
+        <td>{{company.totaldownloads}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

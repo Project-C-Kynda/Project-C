@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Company } from '../database/models/company';
 import { RestService } from '../database/services/rest.service';
 
@@ -10,13 +9,13 @@ import { RestService } from '../database/services/rest.service';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  page = 1;
-  pageSize = 4;
+  page: number = 1;
+  count = 0;
+  tableSizes = [5, 10, 20];
   companies: any = [];
-  collectionSize = this.companies.length;
 
   constructor(private restservice : RestService) { 
-    this.remapCompanies();
+    this.getCompanies();
   }
 
   ngOnInit(): void {
@@ -29,8 +28,14 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
-  remapCompanies() {
-    this.companies.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  onDataChanged(event: any) {
+    this.page = 1;
+    this.getCompanies();
+  }
+
+  onTableSizeChanged(event: any): void {
+    this.page = 1;
+    this.getCompanies();
   }
 
 }

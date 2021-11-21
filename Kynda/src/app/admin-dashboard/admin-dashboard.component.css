@@ -3,13 +3,19 @@
     margin-left: 15vw;
 }
 
-.listOfCompanies{
-    border-radius: 15px;
-    margin-top: 5%;
+.container{
+    color: white;
+    margin-top: 10vh;
 }
 
-.list-group-item{
-    background-color: rgba(255, 255, 255, 0.75);
+.table{
+    color: lightgray;
+    font-weight: normal;
+}
+
+.tableHeading{
+    font-size: 1.2em;
+    font-weight: bolder;
 }
 
 .background{
