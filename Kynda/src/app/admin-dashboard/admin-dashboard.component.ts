@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from '../database/models/company';
+import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
 
 @Component({
@@ -13,9 +14,13 @@ export class AdminDashboardComponent implements OnInit {
   count = 0;
   tableSizes = [5, 10, 20];
   companies: any = [];
+  user: any = [];
+  currentUser = new User();
 
   constructor(private restservice : RestService) { 
     this.getCompanies();
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.currentUser = this.user[0];
   }
 
   ngOnInit(): void {
