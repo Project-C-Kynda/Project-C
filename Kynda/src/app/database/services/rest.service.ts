@@ -62,6 +62,15 @@ export class RestService {
     return this.httpClient.request(req);
   }
 
+  UploadImage(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const req = new HttpRequest('POST', `${this.REST_API}/upload-image`, formData, {
+      responseType: 'json'
+    });
+    return this.httpClient.request(req);
+  }
+
   DownloadFile(): Observable<any> {
     return this.httpClient.get(`${this.REST_API}/download`);
   }
