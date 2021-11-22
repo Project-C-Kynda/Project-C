@@ -71,10 +71,6 @@ export class RestService {
     return this.httpClient.request(req);
   }
 
-  DownloadFile(): Observable<any> {
-    return this.httpClient.get(`${this.REST_API}/download`);
-  }
-
   SendMail(): Observable<any> {
     return this.httpClient.get(`${this.REST_API}/sendmail`)
   }
