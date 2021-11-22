@@ -71,6 +71,14 @@ export class RestService {
     return this.httpClient.request(req);
   }
 
+  GetFileList() {
+    return this.httpClient.get(`${this.REST_API}/file-list`)
+  }
+
+  DeleteImage(filename:String) {
+    return this.httpClient.get(`${this.REST_API}/delete-image/${filename}`)
+  }
+
   SendMail(): Observable<any> {
     return this.httpClient.get(`${this.REST_API}/sendmail`)
   }
