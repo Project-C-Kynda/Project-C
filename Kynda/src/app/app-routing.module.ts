@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "account", component: AccountComponent},
   {path: "company-account", component: CompanyAccountComponent},
-  {path: "template-upload", component: TemplateUploadComponent}
+  {path: "template-upload", component: TemplateUploadComponent},
 ];
 
 @NgModule({

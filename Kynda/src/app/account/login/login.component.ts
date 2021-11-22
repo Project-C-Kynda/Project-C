@@ -42,8 +42,15 @@ export class LoginComponent implements OnInit {
           if (this.User[0].password == pass)
           {
             this.validationMessage = "";
-            this.router.navigate(['/template'])
             localStorage.setItem('user',JSON.stringify(this.User));
+            if (this.User[0].roleid == 2)
+            {
+              this.router.navigate(['/company-account']);
+            }
+            else
+            {
+              this.router.navigate(['/template']);
+            }
             return this.validationMessage;
           }
           else{
