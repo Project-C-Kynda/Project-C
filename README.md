@@ -53,6 +53,17 @@ Dit opent een internet pagina waar alle aanpassingen live worden geupdate
   * Node Package Manager ([NPM](https://nodejs.org/en/))
   * jsPDF voor het genereren van een pdf bestand ([jsPDF](https://rawgit.com/MrRio/jsPDF/master/docs/index.html))
   * Een PostGreSQL database ([PostGreSQL](https://www.postgresql.org))
+  * Bootstrap 4.6.0 voor mooiere en betere styling ([Bootstrap](https://getbootstrap.com))
+* Nodejs Express Server die gebruik maakt van:
+  * [Express](https://www.npmjs.com/package/express)
+  * [Cors](https://www.npmjs.com/package/cors)
+  * [Express-FileUpload](https://www.npmjs.com/package/express-fileupload)
+  * [Body-Parser](https://www.npmjs.com/package/body-parser)
+  * [Nodemialer](https://www.npmjs.com/package/nodemailer)
+  * [Nodemon](https://www.npmjs.com/package/nodemon)
+  * [pg](https://www.npmjs.com/package/pg)
+  * [pg-hstore](https://www.npmjs.com/package/pg-hstore)
+  * [sequelize](https://www.npmjs.com/package/sequelize)
 
 # Contributors
 * Jasmijn [git](https://github.com/JasmijnKramer)

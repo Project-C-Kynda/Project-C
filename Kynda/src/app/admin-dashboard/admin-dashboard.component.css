@@ -1,0 +1,38 @@
+.content{
+    width: 70vw;
+    margin-left: 15vw;
+}
+
+.container{
+    color: white;
+    margin-top: 10vh;
+}
+
+.table{
+    color: lightgray;
+    font-weight: normal;
+}
+
+.tableHeading{
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+.background{
+    background-image: 
+        linear-gradient(rgba(255, 0, 187), transparent), 
+        linear-gradient(93deg, transparent, rgba(19, 43, 200, 0.89 )), 
+        linear-gradient(60deg, rgb(210, 46, 18), transparent);
+    height: 100%;
+}
+
+.navbar{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+h2{
+    color: white;
+    margin-top: 5vh;
+    font-size: 1.3em;
+}

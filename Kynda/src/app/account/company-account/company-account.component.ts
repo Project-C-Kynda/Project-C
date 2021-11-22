@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Company } from 'src/app/database/models/company';
 import { RestService } from 'src/app/database/services/rest.service';
 
@@ -15,9 +16,14 @@ export class CompanyAccountComponent implements OnInit {
   manual: any;
   addCompany!: FormGroup;
 
+  selectedFiles?: FileList;
+  currentFile?: File;
+  message = '';
+
+  fileInfos?: Observable<any>;
+
   companyName!: FormControl;
   styleguide!: FormControl;
-
   constructor(private restservice: RestService) { }
 
   ngOnInit() {
@@ -34,6 +40,8 @@ export class CompanyAccountComponent implements OnInit {
 
   getFileDetails(event: any)
   {
+    this.selectedFiles = event.target.files;
+
     for (var i = 0; i < event.target.files.length; i++) { 
       this.manual = event.target.files[i].name;
     }
@@ -50,11 +58,35 @@ export class CompanyAccountComponent implements OnInit {
     this.toggleShow();
   }
 
+  upload(): void {
+    if(this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+
+      if(file) {
+        this.currentFile = file;
+
+        this.restservice.UploadFile(this.currentFile).subscribe(
+          (err: any) => {
+            console.log(err);
+
+            if(err.error && err.error.message) {
+              this.message = err.error.message;
+            } else {
+              this.message = 'Could not upload file!';
+            }
+          this.currentFile = undefined;
+          });
+      }
+      this.selectedFiles = undefined;
+    }
+  }
+
   uploadCompany(){
+    this.upload();
     this.makeCompany();
     this.restservice.AddCompany(this.company)
     .subscribe(data => {
-      console.log(data);
+     console.log(data);
     })
   }
 }

@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { TemplateComponent } from './template/template.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
 import { DatabaseComponent } from './database/database.component';
@@ -14,6 +15,7 @@ import { LoginComponent } from './account/login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { TemplateUploadComponent } from './template-upload/template-upload.compo
     AccountComponent,
     CompanyAccountComponent,
     TemplateUploadComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { TemplateUploadComponent } from './template-upload/template-upload.compo
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
