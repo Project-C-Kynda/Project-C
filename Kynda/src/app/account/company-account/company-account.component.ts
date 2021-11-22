@@ -82,6 +82,14 @@ export class CompanyAccountComponent implements OnInit {
     }
   }
 
+  downloadFile() {
+    console.log("downloading");
+    this.restservice.DownloadFile()
+    .subscribe(data => {
+      console.log(data);
+    });
+  }
+
   uploadCompany(){
     this.upload();
     this.makeCompany();
