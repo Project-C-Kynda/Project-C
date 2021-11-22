@@ -22,11 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let company of companies | paginate : {
-                  itemsPerPage: tableSize,
-                  currentPage: page,
-                  totalItems: count
-                };">
+        <tr *ngFor="let company of companies">
           <th scope="row">{{company.name}}</th>
           <td>{{company.totaldownloads}}</td>
         </tr>
