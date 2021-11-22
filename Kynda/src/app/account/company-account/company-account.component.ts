@@ -24,7 +24,6 @@ export class CompanyAccountComponent implements OnInit {
 
   companyName!: FormControl;
   styleguide!: FormControl;
-
   constructor(private restservice: RestService) { }
 
   ngOnInit() {
