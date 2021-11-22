@@ -32,35 +32,29 @@ export class LoginComponent implements OnInit {
       }
     )
   }
+
+  logout(){
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
+  }
   
   
   Login(name: string, pass: string) {
     this.restservice.getUser(name)
       .subscribe(data => {
         this.User = data;
-        if(this.User.length >= 1) {
-          if (this.User[0].password == pass)
+        if(this.User.length >= 1 && this.User[0].password == pass) {
+          localStorage.setItem('user',JSON.stringify(this.User));
+          if (this.User[0].roleid == 2)
           {
-            this.validationMessage = "";
-            localStorage.setItem('user',JSON.stringify(this.User));
-            if (this.User[0].roleid == 2)
-            {
-              this.router.navigate(['/admin-dashboard']);
-            }
-            else
-            {
-              this.router.navigate(['/template']);
-            }
-            return this.validationMessage;
+            this.router.navigate(['/admin-dashboard']);
           }
-          else{
-            this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
-            return this.validationMessage;
+          else
+          {
+            this.router.navigate(['/template']);
           }
-        } else {
-          this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
-          return this.validationMessage;
         }
+        return this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
       })
   }
 }
