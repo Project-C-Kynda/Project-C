@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Company } from '../database/models/company';
 import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
@@ -17,13 +18,17 @@ export class AdminDashboardComponent implements OnInit {
   user: any = [];
   currentUser = new User();
 
-  constructor(private restservice : RestService) { 
+  constructor(private restservice : RestService, private router: Router) { 
     this.getCompanies();
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     this.currentUser = this.user[0];
   }
 
   ngOnInit(): void {
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
 
   getCompanies() {
