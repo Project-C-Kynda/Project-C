@@ -11,6 +11,9 @@
     font-weight: bold;
 }
 
+.navbar-text{
+    margin-right: 1vw;
+}
 
 .background{
     width: 100vw;
