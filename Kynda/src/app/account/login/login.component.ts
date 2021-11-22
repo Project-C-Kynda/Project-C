@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RestService } from '../database/services/rest.service';
+import { RestService } from '../../database/services/rest.service';
 
 @Component({
   selector: 'app-login',
@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
       }
     )
   }
-
   
-  checkUser(name: string, pass: string) {
+  
+  Login(name: string, pass: string) {
     this.restservice.getUser(name)
       .subscribe(data => {
         console.log(data);
@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
           {
             this.validationMessage = "";
             this.router.navigate(['/template'])
+            localStorage.setItem('user',JSON.stringify(this.User));
             return this.validationMessage;
           }
           else{
