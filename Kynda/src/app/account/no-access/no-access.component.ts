@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../database/models/user';
+import { User } from '../../database/models/user';
 
 @Component({
   selector: 'app-no-access',

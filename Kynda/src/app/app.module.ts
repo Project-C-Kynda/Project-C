@@ -16,8 +16,8 @@ import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { NoAccessComponent } from './no-access/no-access.component';
-
+import { NoAccessComponent } from './account/no-access/no-access.component';
+import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import { NoAccessComponent } from './no-access/no-access.component';
     TemplateUploadComponent,
     AdminDashboardComponent,
     NoAccessComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

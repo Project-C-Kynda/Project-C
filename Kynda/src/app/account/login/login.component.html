@@ -13,13 +13,14 @@
             <div class="form-group">
                 <label for="passwordValidation">Wachtwoord</label>
                 <input type="password" class="form-control" id="passwordValidation" #passwordValidation formControlName="password" 
-                    [ngClass]="{'is-invalid': password.errors && userName.touched}">
+                    [ngClass]="{'is-invalid': password.errors && password.touched}">
                 <div class="invalid-feedback">
                     Dit veld is verplicht
                 </div>
+                <a class="forgot-password" [routerLink]="['/forgot-password']" routerLinkActive="router-link-active">Wachtwoord vergeten?</a>
             </div>
             <p>{{validationMessage}}</p>
-            <button type="submit" class="btn btn-dark" (click)="Login(usernameValidation.value,passwordValidation.value)">Inloggen</button>
+            <button type="submit" class="btn btn-dark login" (click)="Login(usernameValidation.value,passwordValidation.value)">Inloggen</button>
         </form>
     </div>
 </div>
