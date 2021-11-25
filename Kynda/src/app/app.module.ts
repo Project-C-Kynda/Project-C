@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
+import { TemplateLibraryComponent } from './template-library/template-library.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TemplateUploadComponent } from './template-upload/template-upload.compo
     LoginComponent,
     AccountComponent,
     CompanyAccountComponent,
-    TemplateUploadComponent
+    TemplateUploadComponent,
+    TemplateLibraryComponent
   ],
   imports: [
     BrowserModule,
