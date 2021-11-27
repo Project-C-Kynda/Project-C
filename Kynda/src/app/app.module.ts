@@ -16,6 +16,7 @@ import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     CompanyAccountComponent,
     TemplateUploadComponent,
     AdminDashboardComponent,
+    ClientDashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,10 @@ export class RestService {
     return this.httpClient.get(`${this.REST_API}/companies`);
   }
 
+  GetTemplates(companyId:string) {
+    return this.httpClient.get(`${this.REST_API}/templates/${companyId}`);
+  }
+
   AddCompany(company: Company): Observable<any> {
     const headers = {'content-type': 'application/json'};
     const body = JSON.stringify(company);

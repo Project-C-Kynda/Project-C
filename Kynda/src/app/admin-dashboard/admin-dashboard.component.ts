@@ -22,6 +22,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getCompanies() {
+    console.log("running ");
     this.restservice.GetCompanies()
     .subscribe(data => {
       this.companies = data; 
