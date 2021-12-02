@@ -17,6 +17,7 @@ import { CompanyAccountComponent } from './account/company-account/company-accou
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
+import { CustomTemplateLibComponent } from './custom-template-lib/custom-template-lib.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { ClientDashboardComponent } from './client-dashboard/client-dashboard.co
     TemplateUploadComponent,
     AdminDashboardComponent,
     ClientDashboardComponent,
+    CustomTemplateLibComponent,
   ],
   imports: [
     BrowserModule,
