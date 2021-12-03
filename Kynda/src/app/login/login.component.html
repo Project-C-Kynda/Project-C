@@ -12,14 +12,15 @@
             </div>
             <div class="form-group">
                 <label for="passwordValidation">Wachtwoord</label>
-                <input type="password" class="form-control" id="passwordValidation" #passwordValidation formControlName="password" 
+                <input type="password" class="form-control" id="passwordValidation" #passwordValidation formControlName="password"
                     [ngClass]="{'is-invalid': password.errors && userName.touched}">
                 <div class="invalid-feedback">
                     Dit veld is verplicht
                 </div>
             </div>
             <p>{{validationMessage}}</p>
-            <button type="submit" class="btn btn-dark" (click)="checkUser(usernameValidation.value,passwordValidation.value)">Inloggen</button>
+            <!--<button type="submit" class="btn btn-dark" (click)="checkUser(usernameValidation.value,passwordValidation.value)">Inloggen</button>-->
+            <button type="submit" class="btn btn-dark" (click)="validateUser()">validate</button>
         </form>
     </div>
 </div>

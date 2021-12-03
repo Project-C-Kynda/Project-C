@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../database/services/rest.service';
+import { Template } from '../database/models/template';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -8,6 +9,7 @@ import { RestService } from '../database/services/rest.service';
 })
 export class ClientDashboardComponent implements OnInit {
 
+  template = new Template();
   templates: any = [];
 
   constructor(private restservice : RestService) { 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Login } from '../database/models/login';
 import { RestService } from '../database/services/rest.service';
 
 @Component({
@@ -9,11 +10,12 @@ import { RestService } from '../database/services/rest.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
   validationMessage!: string;
 
   User: any = [];
   login!: FormGroup;
+  loginCredentials = new Login();
 
   userName!: FormControl;
   password!: FormControl;
@@ -32,7 +34,15 @@ export class LoginComponent implements OnInit {
     )
   }
 
-  
+  validateUser() {
+    this.loginCredentials.accountname = "testgebruiker";
+    this.loginCredentials.password = "efI0mKgu";
+    this.restservice.ValidateLogin(this.loginCredentials)
+    .subscribe(data => {
+      console.log(data);
+    })
+  }
+
   checkUser(name: string, pass: string) {
     this.restservice.getUser(name)
       .subscribe(data => {
