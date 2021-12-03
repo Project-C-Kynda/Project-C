@@ -12,11 +12,11 @@ export class ClientDashboardComponent implements OnInit {
   template = new Template();
   templates: any = [];
 
-  constructor(private restservice : RestService) { 
+  constructor(private restservice : RestService) {
   }
 
   ngOnInit(): void {
-    this.getTemplates("1"); 
+    this.getTemplates("1");
   }
 
   getTemplates(companyId:string) {
@@ -27,6 +27,10 @@ export class ClientDashboardComponent implements OnInit {
       console.log(data);
       this.templates = data;
     })
+  }
+
+  loadTempalte(templateName:string) {
+
   }
 
 }
