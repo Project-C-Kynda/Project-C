@@ -15,11 +15,13 @@ export class CustomTemplateLibComponent implements OnInit {
   templates = TEMPLATES;
   downloadTemplates: Template[] = [];
   reviewTemplates: Template[] = [];
+  
   selectorParts : any;
   editorParts : any;
   loadedHtmlFile : any;
   paragraphs : any;
   headings : any;
+  httpString : any;
 
   constructor(private restservice : RestService, private http : HttpClient) { 
   }
@@ -47,15 +49,11 @@ export class CustomTemplateLibComponent implements OnInit {
   {
       this.http.get(template.ref,{ responseType: 'text' })
           .subscribe((data : string) => {
-              this.htmlFromString(data)
-              this.selectorParts = document.getElementById("selector-parts")
-              this.selectorParts.remove();
-              
-              //this.inputBoxFileNaam = document.getElementById('file_naam');
-              //this.button = document.getElementById('load_button')
-              //this.button.remove();
-              //this.inputBoxFileNaam.remove();
-              this.editorParts.style.display = 'initial';
+            this.httpString = data;
+            this.htmlFromString(data)
+            this.selectorParts = document.getElementById("container")
+            this.selectorParts.remove();
+            this.editorParts.style.display = 'initial';
           }
       );
   }
