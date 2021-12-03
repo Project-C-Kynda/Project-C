@@ -3,6 +3,7 @@ import { RestService } from '../database/services/rest.service';
 import { Template, TEMPLATES } from "./template-dir"
 import { HttpClient } from '@angular/common/http';
 import { TemplateComponent } from '../template/template.component';
+import { DownloadService } from '../template-download/download.service';
 
 
 @Component({
@@ -22,8 +23,9 @@ export class CustomTemplateLibComponent implements OnInit {
   paragraphs : any;
   headings : any;
   httpString : any;
+  htmlDoc : any;
 
-  constructor(private restservice : RestService, private http : HttpClient) { 
+  constructor(private restservice : RestService, private http : HttpClient, private download:DownloadService) { 
   }
 
   ngOnInit(): void {
@@ -34,12 +36,10 @@ export class CustomTemplateLibComponent implements OnInit {
     for (let i = 0; i < TEMPLATES.length; i++) {
       if (TEMPLATES[i].rev) {
         this.downloadTemplates?.push(TEMPLATES[i]);
-        console.log(this.downloadTemplates);
       }
       else
       {
         this.reviewTemplates?.push(TEMPLATES[i]);
-        console.log(this.reviewTemplates);
       }
       
     }
@@ -69,5 +69,11 @@ export class CustomTemplateLibComponent implements OnInit {
     //It will ignore all elements that have class='editor' in them
     this.headings = this.loadedHtmlFile.content.querySelectorAll('h1:not(.editor),h2:not(.editor),h3:not(.editor),h4:not(.editor),h5:not(.editor),h6:not(.editor)');
     this.paragraphs = this.loadedHtmlFile.content.querySelectorAll('p');
+  }
+
+  funcDownload(Id: string){
+    this.htmlDoc = document.getElementById(Id)
+    console.log(this.htmlDoc)
+    this.download.convertToPDF(this.htmlDoc);
   }
 }

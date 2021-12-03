@@ -42,7 +42,8 @@
             </div>
         </div>
     </div>
-    <div *ngIf="httpString != null" class="content col-8">
-        <div [innerHtml]="loadedHtmlFile.innerHTML"></div>
+    <div *ngIf="httpString != null" class="content col-8" id="template-part">
+        <div [innerHtml]="loadedHtmlFile.innerHTML">
+        </div>
     </div>
 </div>
