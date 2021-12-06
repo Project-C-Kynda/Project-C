@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RestService } from '../database/services/rest.service';
+import { RestService } from '../../database/services/rest.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   
   validationMessage!: string;
 
-  User: any = [];
+  public User: any = [];
   login!: FormGroup;
 
   userName!: FormControl;
@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.userName = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);
+    localStorage.removeItem('user');
 
     this.login = new FormGroup(
       {
@@ -32,27 +33,28 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  logout(){
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
+  }
   
-  checkUser(name: string, pass: string) {
+  
+  Login(name: string, pass: string) {
     this.restservice.getUser(name)
       .subscribe(data => {
-        console.log(data);
         this.User = data;
-        if(this.User.length >= 1) {
-          if (this.User[0].password == pass)
+        if(this.User.length >= 1 && this.User[0].password == pass) {
+          localStorage.setItem('user',JSON.stringify(this.User));
+          if (this.User[0].roleid == 2)
           {
-            this.validationMessage = "";
-            this.router.navigate(['/template'])
-            return this.validationMessage;
+            this.router.navigate(['/admin-dashboard']);
           }
-          else{
-            this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
-            return this.validationMessage;
+          else
+          {
+            this.router.navigate(['/template']);
           }
-        } else {
-          this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
-          return this.validationMessage;
         }
+        return this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
       })
   }
 }

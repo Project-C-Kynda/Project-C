@@ -11,14 +11,19 @@ import { TemplateComponent } from './template/template.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
 import { DatabaseComponent } from './database/database.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './account/login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+<<<<<<< HEAD
 import { CompanyadminAccountComponent } from './account/companyadmin-account/companyadmin-account.component';
 import { CompanyadminDashboardComponent } from './companyadmin-dashboard/companyadmin-dashboard.component';
 
+=======
+import { NoAccessComponent } from './account/no-access/no-access.component';
+import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
+>>>>>>> main
 
 @NgModule({
   declarations: [
@@ -32,8 +37,13 @@ import { CompanyadminDashboardComponent } from './companyadmin-dashboard/company
     CompanyAccountComponent,
     TemplateUploadComponent,
     AdminDashboardComponent,
+<<<<<<< HEAD
     CompanyadminAccountComponent,
     CompanyadminDashboardComponent,
+=======
+    NoAccessComponent,
+    ForgotPasswordComponent,
+>>>>>>> main
   ],
   imports: [
     BrowserModule,
