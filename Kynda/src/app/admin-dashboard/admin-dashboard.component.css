@@ -31,6 +31,10 @@
     font-weight: bold;
 }
 
+.navbar-text{
+    margin-right: 1vw;
+}
+
 h2{
     color: white;
     margin-top: 5vh;

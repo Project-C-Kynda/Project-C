@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../database/models/user';
 import { TemplateUploadService } from './template-upload.service';
 
 @Component({
@@ -12,11 +14,20 @@ export class TemplateUploadComponent implements OnInit {
 	completeLoad: boolean = false;
 	loading: boolean = false; // Flag variable
 	file!: File; // Variable to store file
-
+	
+	user: any = [];
+	currentUser = new User();
 	// Inject service
-	constructor(private templateUploadService: TemplateUploadService) { }
+	constructor(private templateUploadService: TemplateUploadService, private router: Router) {
+		this.user = JSON.parse(localStorage.getItem('user') || '{}');
+		this.currentUser = this.user[0];
+	}
 
 	ngOnInit(): void {
+		if (this.currentUser == undefined || this.currentUser.roleid != 2)
+		{
+		this.router.navigate(['/no-access']);
+		}
 	}
 
 	// On file Select
