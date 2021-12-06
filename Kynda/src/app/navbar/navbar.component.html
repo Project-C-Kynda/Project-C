@@ -14,8 +14,11 @@
 
     <div class="nav navbar-nav ml-auto justify-content-end">
         <ul class="navbar-nav ml-auto">
+            <li class="navbar-text">
+                U bent in gelogd als: {{currentUser.accountname}}
+            </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/admin-dashboard']" [routerLinkActive]="['active']">Account</a>
+                <a class="nav-link btn btn-outline-secondary" [routerLink]="['/login']" routerLinkActive="router-link-active" >Logout</a>
             </li>
         </ul>
     </div>

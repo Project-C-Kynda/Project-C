@@ -11,7 +11,7 @@ import { TemplateComponent } from './template/template.component';
 import { ImageLibraryComponent } from './image-library/image-library.component';
 import { DatabaseComponent } from './database/database.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './account/login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
@@ -20,6 +20,8 @@ import { ClientDashboardComponent } from './client-dashboard/client-dashboard.co
 import { CustomTemplateLibComponent } from './custom-template-lib/custom-template-lib.component';
 import { ManualComponent } from './manual/manual.component';
 
+import { NoAccessComponent } from './account/no-access/no-access.component';
+import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { ManualComponent } from './manual/manual.component';
     ClientDashboardComponent,
     CustomTemplateLibComponent,
     ManualComponent,
+    NoAccessComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

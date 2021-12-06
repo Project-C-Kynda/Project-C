@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Company } from 'src/app/database/models/company';
+import { User } from 'src/app/database/models/user';
 import { RestService } from 'src/app/database/services/rest.service';
 
 @Component({
@@ -24,7 +26,14 @@ export class CompanyAccountComponent implements OnInit {
 
   companyName!: FormControl;
   styleguide!: FormControl;
-  constructor(private restservice: RestService) { }
+
+  user: any = [];
+  currentUser = new User();
+
+  constructor(private restservice: RestService, private router: Router) {
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.currentUser = this.user[0];
+   }
 
   ngOnInit() {
     this.companyName = new FormControl('',Validators.required);
@@ -36,6 +45,11 @@ export class CompanyAccountComponent implements OnInit {
         'styleguide': this.styleguide
       }
     )
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
 
   getFileDetails(event: any)

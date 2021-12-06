@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
 
@@ -23,8 +24,13 @@ export class AccountComponent implements OnInit {
   emailAddress!: FormControl;
   company!: FormControl;
 
+  userlist: any = [];
+  currentUser = new User();
 
-  constructor(private restservice: RestService, private formBuilder: FormBuilder) { }
+  constructor(private restservice: RestService, private formBuilder: FormBuilder, private router: Router) {
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.currentUser = this.userlist[0];
+   }
 
   ngOnInit() {
     this.username = new FormControl(null,Validators.required);
@@ -38,6 +44,11 @@ export class AccountComponent implements OnInit {
     });
 
     this.getCompanies();
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
 
   changeValue(e: any): void {

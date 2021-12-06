@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { User } from '../database/models/user';
 
 @Component({
   selector: 'app-template',
@@ -20,7 +22,13 @@ export class TemplateComponent implements OnInit {
   headings : any;
   httpString : any;
 
-  constructor(private http : HttpClient) { }
+  user: any = [];
+  currentUser = new User();
+
+  constructor(private http : HttpClient, private router:Router) { 
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.currentUser = this.user[0];
+  }
 
 
 
@@ -32,6 +40,11 @@ export class TemplateComponent implements OnInit {
     this.getHtmlFile();
     this.editorParts = document.getElementById('editor-parts');
     this.editorParts.style.display = 'none';
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 1)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
 
   //Gets the HTML file from the templates folder
