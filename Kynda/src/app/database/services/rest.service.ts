@@ -31,6 +31,10 @@ export class RestService {
     return this.httpClient.get(`${this.REST_API}/companies`);
   }
 
+  GetCompany(companyId: string) {
+      return this.httpClient.get(`${this.REST_API}/company/${companyId}`);
+  }
+
   GetTemplates(companyId:string) {
     return this.httpClient.get(`${this.REST_API}/templates/${companyId}`);
   }

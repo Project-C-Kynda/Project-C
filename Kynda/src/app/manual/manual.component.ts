@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Company } from '../database/models/company';
+import { RestService } from '../database/services/rest.service';
 
 @Component({
   selector: 'app-manual',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManualComponent implements OnInit {
 
-  constructor() { }
+  company = new Company();
+
+  constructor(private restservice: RestService) { }
 
   ngOnInit(): void {
+
   }
 
 }
