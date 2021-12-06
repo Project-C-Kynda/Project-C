@@ -11,6 +11,7 @@ import { TemplateUploadComponent } from './template-upload/template-upload.compo
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 import { CustomTemplateLibComponent } from './custom-template-lib/custom-template-lib.component';
+import { ManualComponent } from './manual/manual.component';
 
 const routes: Routes = [
   { path: '',
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: "admin-dashboard", component: AdminDashboardComponent},
   {path: "client-dashboard", component: ClientDashboardComponent},
   {path: "custom-template-lib", component: CustomTemplateLibComponent},
+  {path: "manual", component: ManualComponent},
 ];
 
 @NgModule({
