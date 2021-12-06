@@ -13,7 +13,7 @@ export class TemplateComponent implements OnInit {
   selectorParts: any;
   //button : any;
   //inputBoxFileNaam : any;
-  inputFileNaam : any;
+  inputFileNaam: any;
 
   loadedHtmlFile : any;
   paragraphs : any;
@@ -23,9 +23,13 @@ export class TemplateComponent implements OnInit {
   constructor(private http : HttpClient) { }
 
 
-  
-  ngOnInit(): void 
+
+  ngOnInit(): void
   {
+    const name = localStorage.getItem('templateName')?.replace(/['"]+/g, '');
+    this.inputFileNaam = name;
+    localStorage.removeItem('templateName');
+    this.getHtmlFile();
     this.editorParts = document.getElementById('editor-parts');
     this.editorParts.style.display = 'none';
   }
@@ -41,7 +45,7 @@ export class TemplateComponent implements OnInit {
               this.htmlFromString(this.httpString)
               this.selectorParts = document.getElementById("selector-parts")
               this.selectorParts.remove();
-              
+
               //this.inputBoxFileNaam = document.getElementById('file_naam');
               //this.button = document.getElementById('load_button')
               //this.button.remove();
@@ -52,7 +56,7 @@ export class TemplateComponent implements OnInit {
   }
 
   //Converts the HTML string from the template file into a new document element that can be edited
-   htmlFromString(htmlString : string) 
+   htmlFromString(htmlString : string)
    {
     this.loadedHtmlFile =  document.createElement('template');
     htmlString = htmlString.trim();

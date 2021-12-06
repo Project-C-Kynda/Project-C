@@ -6,9 +6,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-link" [routerLink]="['/template-upload']" routerLinkActive="router-link-active">Template toevoegen</a>
-            <a class="nav-link" [routerLink]="['/company-account']" routerLinkActive="router-link-active">Bedrijfsaccount toevoegen</a>
-            <a class="nav-link" [routerLink]="['/account']" routerLinkActive="router-link-active" >Gebruikersaccount toevoegen</a>
+            <a class="nav-link" [routerLink]="['/image-library']" routerLinkActive="router-link-active">Beeldbank</a>
+            <a class="nav-link" [routerLink]="['/company-account']" routerLinkActive="router-link-active">Handleiding</a>
         </div>
         </div>
     </nav>
@@ -20,7 +19,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title text-center">{{template.templatetype}}</h4>
-                            <button type="button" class="btn btn-dark btn-block">bewerken</button>
+                            <button type="button" class="btn btn-dark btn-block" (click)="loadTempalte(template.name)">bewerken</button>
                         </div>
                     </div>
                 </div>

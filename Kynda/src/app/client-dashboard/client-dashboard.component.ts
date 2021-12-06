@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../database/services/rest.service';
 import { Template } from '../database/models/template';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -12,7 +13,7 @@ export class ClientDashboardComponent implements OnInit {
   template = new Template();
   templates: any = [];
 
-  constructor(private restservice : RestService) {
+  constructor(private restservice : RestService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -29,8 +30,11 @@ export class ClientDashboardComponent implements OnInit {
     })
   }
 
+  //Save the templateName into localstorage?
   loadTempalte(templateName:string) {
-
+    const jsonData = JSON.stringify(templateName);
+    localStorage.setItem('templateName', jsonData);
+    this.router.navigate(['/template']);
   }
 
 }
