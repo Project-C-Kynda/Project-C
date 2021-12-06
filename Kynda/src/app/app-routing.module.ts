@@ -9,6 +9,7 @@ import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { CompanyadminAccountComponent } from './account/companyadmin-account/companyadmin-account.component';
 
 const routes: Routes = [
   { path: '',
@@ -24,6 +25,8 @@ const routes: Routes = [
   {path: "company-account", component: CompanyAccountComponent},
   {path: "template-upload", component: TemplateUploadComponent},
   {path: "admin-dashboard", component: AdminDashboardComponent},
+  {path: "companyadmin-account", component: CompanyadminAccountComponent},
+  
 ];
 
 @NgModule({

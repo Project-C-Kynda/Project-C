@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Company } from 'src/app/database/models/company';
 import { RestService } from 'src/app/database/services/rest.service';
@@ -24,7 +25,7 @@ export class CompanyAccountComponent implements OnInit {
 
   companyName!: FormControl;
   styleguide!: FormControl;
-  constructor(private restservice: RestService) { }
+  constructor(private restservice: RestService, private router: Router) { }
 
   ngOnInit() {
     this.companyName = new FormControl('',Validators.required);
@@ -88,5 +89,6 @@ export class CompanyAccountComponent implements OnInit {
     .subscribe(data => {
      console.log(data);
     })
+    this.router.navigate(['/companyadmin-account'])
   }
 }
