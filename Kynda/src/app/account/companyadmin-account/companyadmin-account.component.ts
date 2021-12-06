@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Company } from 'src/app/database/models/company';
 import { User } from '../../database/models/user';
 import { RestService } from '../../database/services/rest.service';
 
