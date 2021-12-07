@@ -12,6 +12,7 @@ import { DatabaseComponent } from './database/database.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
+import { CookieService } from 'ngx-cookie-service';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
 
@@ -36,7 +37,7 @@ import { TemplateUploadComponent } from './template-upload/template-upload.compo
     HttpClientModule,
     RouterModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
