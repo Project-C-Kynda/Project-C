@@ -10,6 +10,18 @@
     width: 45%;
 }
 
+.template-container{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 100px;
+    left: 45vw;
+    width: 52vw;
+}
+.template{
+    border: 3px dotted white;
+}
+
 .no-template-text{
     text-align: center;
     margin: auto;
@@ -22,4 +34,8 @@
     margin: auto;
     width: auto;
     margin-top: 1em;
+}
+
+#template-download{
+    width: 200px;
 }

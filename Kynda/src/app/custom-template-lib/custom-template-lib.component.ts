@@ -17,13 +17,10 @@ export class CustomTemplateLibComponent implements OnInit {
   downloadTemplates: Template[] = [];
   reviewTemplates: Template[] = [];
   
-  selectorParts : any;
-  editorParts : any;
+
   loadedHtmlFile : any;
-  paragraphs : any;
-  headings : any;
   httpString : any;
-  htmlDoc : any;
+  htmlString: any;
 
   constructor(private restservice : RestService, private http : HttpClient, private download:DownloadService) { 
   }
@@ -61,5 +58,9 @@ export class CustomTemplateLibComponent implements OnInit {
     this.loadedHtmlFile =  document.createElement('template');
     htmlString = htmlString.trim();
     this.loadedHtmlFile.innerHTML = htmlString;
+  }
+
+  templateDownload(){
+    this.download.convertToPDF('download');
   }
 }
