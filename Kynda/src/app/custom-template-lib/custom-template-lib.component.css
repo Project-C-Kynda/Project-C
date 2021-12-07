@@ -5,6 +5,11 @@
         linear-gradient(60deg, rgb(210, 46, 18), transparent);
     height: 100vh;
 }
+
+.review-container{
+    width: 45%;
+}
+
 .no-template-text{
     text-align: center;
     margin: auto;

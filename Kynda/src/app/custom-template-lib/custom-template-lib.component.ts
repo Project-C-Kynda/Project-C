@@ -47,33 +47,19 @@ export class CustomTemplateLibComponent implements OnInit {
   
   getHtmlFile(template : Template)
   {
-      this.http.get(template.ref,{ responseType: 'text' })
-          .subscribe((data : string) => {
-            this.httpString = data;
-            this.htmlFromString(data)
-            this.selectorParts = document.getElementById("container")
-            this.selectorParts.remove();
-            this.editorParts.style.display = 'initial';
-          }
-      );
+    this.http.get(template.ref,{ responseType: 'text' })
+      .subscribe((data : string) => {
+        this.httpString = data;
+        this.htmlFromString(data)
+      }
+    );
   }
 
   //Converts the HTML string from the template file into a new document element that can be edited
-   htmlFromString(htmlString : string) 
-   {
+  htmlFromString(htmlString : string) 
+  {
     this.loadedHtmlFile =  document.createElement('template');
     htmlString = htmlString.trim();
     this.loadedHtmlFile.innerHTML = htmlString;
-
-    //Gets all the <h*> and <p> elements from the HTML template and puts it into an array
-    //It will ignore all elements that have class='editor' in them
-    this.headings = this.loadedHtmlFile.content.querySelectorAll('h1:not(.editor),h2:not(.editor),h3:not(.editor),h4:not(.editor),h5:not(.editor),h6:not(.editor)');
-    this.paragraphs = this.loadedHtmlFile.content.querySelectorAll('p');
-  }
-
-  funcDownload(Id: string){
-    this.htmlDoc = document.getElementById(Id)
-    console.log(this.htmlDoc)
-    this.download.convertToPDF(this.htmlDoc);
   }
 }
