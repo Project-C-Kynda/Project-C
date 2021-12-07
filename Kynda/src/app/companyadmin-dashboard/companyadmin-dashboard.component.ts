@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyadminDashboardComponent implements OnInit {
 
+  templates!: any[];
+
   constructor() { }
 
   ngOnInit(): void {

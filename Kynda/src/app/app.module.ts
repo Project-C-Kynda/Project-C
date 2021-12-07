@@ -16,14 +16,11 @@ import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-<<<<<<< HEAD
 import { CompanyadminAccountComponent } from './account/companyadmin-account/companyadmin-account.component';
 import { CompanyadminDashboardComponent } from './companyadmin-dashboard/companyadmin-dashboard.component';
 
-=======
 import { NoAccessComponent } from './account/no-access/no-access.component';
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
->>>>>>> main
 
 @NgModule({
   declarations: [
@@ -37,13 +34,10 @@ import { ForgotPasswordComponent } from './account/forgot-password/forgot-passwo
     CompanyAccountComponent,
     TemplateUploadComponent,
     AdminDashboardComponent,
-<<<<<<< HEAD
     CompanyadminAccountComponent,
     CompanyadminDashboardComponent,
-=======
     NoAccessComponent,
     ForgotPasswordComponent,
->>>>>>> main
   ],
   imports: [
     BrowserModule,

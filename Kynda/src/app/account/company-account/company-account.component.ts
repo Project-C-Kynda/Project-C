@@ -26,9 +26,6 @@ export class CompanyAccountComponent implements OnInit {
 
   companyName!: FormControl;
   styleguide!: FormControl;
-<<<<<<< HEAD
-  constructor(private restservice: RestService, private router: Router) { }
-=======
 
   user: any = [];
   currentUser = new User();
@@ -37,7 +34,6 @@ export class CompanyAccountComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     this.currentUser = this.user[0];
    }
->>>>>>> main
 
   ngOnInit() {
     this.companyName = new FormControl('',Validators.required);
