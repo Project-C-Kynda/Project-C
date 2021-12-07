@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IMAGE } from './image-interface';
+import { Router } from '@angular/router';
+import { Image } from '../database/models/image';
+import { User } from '../database/models/user';
+import { RestService } from '../database/services/rest.service';
 
 @Component({
   selector: 'app-image-library',
@@ -8,10 +11,30 @@ import { IMAGE } from './image-interface';
 })
 export class ImageLibraryComponent implements OnInit {
 
-  images = IMAGE;
-  constructor() { }
+  images!: Image[];
+  image = new Image();
 
-  ngOnInit(): void {
+  user: any = [];
+  currentUser = new User();
+
+  constructor(private restservice:RestService, private router: Router) { 
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.currentUser = this.user[0];
   }
 
+  ngOnInit(): void {
+    this.getImages();
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 1)
+    {
+      this.router.navigate(['/no-access']);
+    }
+  }
+
+  getImages(){
+    this.restservice.GetImages().subscribe(data =>{
+      this.images = data;
+      console.log(this.images)
+    })
+  }
 }

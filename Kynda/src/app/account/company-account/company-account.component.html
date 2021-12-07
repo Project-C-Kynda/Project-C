@@ -1,19 +1,48 @@
-<form class="needs-validation" [formGroup]="addCompany" novalidate>
-    <h2>Nieuw bedrijfsaccount aanmaken</h2>
-    <div class="form-group">
-        <label for="companynameValidation">Bedrijfsnaam</label>
-        <input type="text" class="form-control" id="companynameValidation" formControlName="companyName" 
-            [ngClass]="{'is-invalid': companyName.errors && (companyName.touched || companyName.dirty), 'is-valid':companyName.valid}">
-        <div class="invalid-feedback">
-            <p *ngIf="companyName.errors?.required">Dit veld is verplicht</p>
+<div class="background">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/admin-dashboard">Admin dashboard</a>
+          <div class="navbar-nav">
+            <a class="nav-link" [routerLink]="['/template-upload']" routerLinkActive="router-link-active">Template toevoegen</a>
+            <a class="nav-link" [routerLink]="['/company-account']" routerLinkActive="router-link-active">Bedrijfsaccount toevoegen</a>
+            <a class="nav-link" [routerLink]="['/account']" routerLinkActive="router-link-active" >Gebruikersaccount toevoegen</a>
+          </div>
+
+        <div class="nav navbar-nav ml-auto justify-content-end">
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-text">
+                    U bent in gelogd als: {{currentUser.accountname}}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary" [routerLink]="['/login']" routerLinkActive="router-link-active" >Logout</a>
+                </li>
+            </ul>
         </div>
+    </nav>
+    
+    <div class="card">
+        <h2 class="card-title text-center">Nieuw bedrijfsaccount aanmaken</h2>
+        <form class="needs-validation" [formGroup]="addCompany" novalidate>
+            <div class="form-group">
+                <label for="companynameValidation">Bedrijfsnaam</label>
+                <input type="text" class="form-control" id="companynameValidation" [(ngModel)]="company.name" formControlName="companyName" 
+                    [ngClass]="{'is-invalid': companyName.errors && (companyName.dirty || companyName.touched), 'is-valid':companyName.valid}">
+                <div class="invalid-feedback">
+                    <p *ngIf="companyName.errors?.required">Dit veld is verplicht</p>
+                </div>
+            </div>
+            <div class="form-group" enctype="multipart/form-data">
+                <p>Upload hier eventueel de styleguide</p>
+                <div>
+                    <input type="file" accept=".pdf, .docx, .pages" id="customFileLangHTML"  (change)="getFileDetails($event)" >
+                    <label for="customFileLangHTML"></label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-dark" [disabled]="addCompany.invalid" (click)="uploadCompany()">Bedrijfsaccount aanmaken</button>
+            <div class="form-group">
+                <div class="alert alert-success" *ngIf="isShown" role="alert">
+                    <h4 class="alert-heading">Account is aangemaakt!</h4>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <p>Upload hier eventueel de styleguide</p>
-        <div class="custom-file">
-            <input class="custom-file-input" type="file" id="manual"/>
-            <label class="custom-file-label" for="manual" data-browse="Bestand kiezen" formControlName="styleguide">Upload een styleguide</label>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-info">Bedrijfsaccount aanmaken</button>
-</form>
+</div>        

@@ -1,0 +1,52 @@
+<div class="background">
+    <app-navbar></app-navbar>
+    
+    <div id="container">
+        <div *ngIf="templates.length === 0">
+            <div>
+                <h3 class="no-template-text">Er zijn momenteel geen templates voor review</h3>
+            </div>
+        </div>
+    
+        
+
+        <div class="review-container">
+            <h3 class="template-header-text">Hier de templates open voor review</h3>
+            <div class="d-flex p-2">
+                <div class="row justify-content-start">
+                    <div *ngFor="let template of downloadTemplates">
+                        <div class="col mt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>{{template.name}}</p>
+                                    <button type="button" class="btn btn-dark btn-block" (click)="getHtmlFile(template)">Review</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+            
+        <h3 class="template-header-text">Hier de templates die klaar zijn voor download</h3>
+        <div class="d-flex p-2">
+            <div class="row justify-content-start">
+                <div *ngFor="let template of reviewTemplates">
+                    <div class="col mt-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>{{template.name}}</p>
+                                <button type="button" class="btn btn-dark btn-block" (click)="getHtmlFile(template)">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    
+    
+    
+</div>

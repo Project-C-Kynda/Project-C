@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
 
@@ -10,6 +11,7 @@ import { RestService } from '../database/services/rest.service';
 })
 export class AccountComponent implements OnInit {
 
+  isShown: boolean = false;
   selectedOption!: string;
   id: any = 0;
   companies: any = [];
@@ -22,23 +24,33 @@ export class AccountComponent implements OnInit {
   emailAddress!: FormControl;
   company!: FormControl;
 
+  userlist: any = [];
+  currentUser = new User();
 
-  constructor(private restservice: RestService) { }
+  constructor(private restservice: RestService, private formBuilder: FormBuilder, private router: Router) {
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.currentUser = this.userlist[0];
+   }
 
   ngOnInit() {
-    this.username = new FormControl('',Validators.required);
-    this.emailAddress = new FormControl('',[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
-    this.company = new FormControl('',Validators.required);
+    this.username = new FormControl(null,Validators.required);
+    this.emailAddress = new FormControl(null,[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
+    this.company = new FormControl();
 
-    this.userForm =  new FormGroup({
+    this.userForm =  this.formBuilder.group({
       'username': this.username,
       'emailAddress': this.emailAddress,
       'company': this.company
     });
 
     this.getCompanies();
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
-  
+
   changeValue(e: any): void {
     this.id = this.companies.find(function (c: { name: any; }) {
         return c.name == e.target.value;
@@ -76,12 +88,17 @@ export class AccountComponent implements OnInit {
       return array;
   }
 
+  toggleShow() {
+    this.isShown = ! this.isShown;
+    }
+
   makeUser()
   {
-    this.user.companyid = this.id.id;
+    this.user.companyid = this.id.id || 0;
     this.user.password =  this.generatePassword(8);
     this.user.roleid = 2;
     this.addUser();
+    this.toggleShow();
   }
 
   addUser()
@@ -90,8 +107,8 @@ export class AccountComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
     })
-  }  
-  
+  }
+
 //===================EMAIL===================
   sendMail()
   {

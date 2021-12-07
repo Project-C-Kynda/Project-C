@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AccountComponent } from './account/account.component';
+import { LoginComponent } from './account/login/login.component';
+import { User } from './database/models/user';
 
 @Component({
   selector: 'app-root',
