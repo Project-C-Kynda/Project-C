@@ -18,6 +18,9 @@ import { TemplateUploadComponent } from './template-upload/template-upload.compo
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CompanyadminAccountComponent } from './account/companyadmin-account/companyadmin-account.component';
 import { CompanyadminDashboardComponent } from './companyadmin-dashboard/companyadmin-dashboard.component';
+import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
+import { CustomTemplateLibComponent } from './custom-template-lib/custom-template-lib.component';
+import { ManualComponent } from './manual/manual.component';
 
 import { NoAccessComponent } from './account/no-access/no-access.component';
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
@@ -36,6 +39,9 @@ import { ForgotPasswordComponent } from './account/forgot-password/forgot-passwo
     AdminDashboardComponent,
     CompanyadminAccountComponent,
     CompanyadminDashboardComponent,
+    ClientDashboardComponent,
+    CustomTemplateLibComponent,
+    ManualComponent,
     NoAccessComponent,
     ForgotPasswordComponent,
   ],

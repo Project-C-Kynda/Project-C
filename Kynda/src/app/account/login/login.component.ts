@@ -9,7 +9,7 @@ import { RestService } from '../../database/services/rest.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
   validationMessage!: string;
 
   public User: any = [];
@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
     localStorage.removeItem('user');
     this.router.navigate(['/']);
   }
-  
-  
+
+
   Login(name: string, pass: string) {
     this.restservice.getUser(name)
       .subscribe(data => {
