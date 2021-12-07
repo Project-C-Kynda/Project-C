@@ -3,6 +3,7 @@
 ![node js](https://github.com/Project-C-Kynda/Project-C/actions/workflows/node.js.yml/badge.svg)
 <img src="https://img.shields.io/badge/Angular-12-red" alt="angular">
 <img src="https://img.shields.io/badge/NodeJs-14-pastelgreen" alt="nodejs">
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 > Vul uw eigen templates in voor uw bedrijf
 
