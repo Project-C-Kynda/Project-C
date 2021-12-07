@@ -50,7 +50,7 @@ export class AccountComponent implements OnInit {
       this.router.navigate(['/no-access']);
     }
   }
-  
+
   changeValue(e: any): void {
     this.id = this.companies.find(function (c: { name: any; }) {
         return c.name == e.target.value;
@@ -94,7 +94,7 @@ export class AccountComponent implements OnInit {
 
   makeUser()
   {
-    this.user.companyid = this.id.id;
+    this.user.companyid = this.id.id || 0;
     this.user.password =  this.generatePassword(8);
     this.user.roleid = 2;
     this.addUser();
@@ -107,8 +107,8 @@ export class AccountComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
     })
-  }  
-  
+  }
+
 //===================EMAIL===================
   sendMail()
   {

@@ -4,9 +4,10 @@ import { Company } from '../models/company';
 import { Image } from '../models/image';
 import { User } from '../models/user';
 
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest, HttpParams } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable , throwError } from 'rxjs';
+import { Login } from '../models/login';
 
 
 @Injectable({
@@ -20,8 +21,22 @@ export class RestService {
 
   constructor(private httpClient: HttpClient) { }
 
+  ValidateLogin(login: Login): Observable<any> {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(login);
+    return this.httpClient.post(`${this.REST_API}/validate`, body, {'headers':headers});
+  }
+
   GetCompanies() {
     return this.httpClient.get(`${this.REST_API}/companies`);
+  }
+
+  GetCompany(companyId: string) {
+      return this.httpClient.get(`${this.REST_API}/company/${companyId}`);
+  }
+
+  GetTemplates(companyId:string) {
+    return this.httpClient.get(`${this.REST_API}/templates/${companyId}`);
   }
 
   AddCompany(company: Company): Observable<any> {
@@ -31,8 +46,11 @@ export class RestService {
     return this.httpClient.post(`${this.REST_API}/company`, body, {'headers':headers})
   }
 
-  getUser(accName:String) {
-    return this.httpClient.get(`${this.REST_API}/user/${accName}`);
+  getUser(accName:String): Observable<any> {
+    return this.httpClient.get(`${this.REST_API}/user/${accName}`, {observe: 'response'}).pipe(map(data => {
+        console.log("Response code: " + data.status)
+        return data.status;
+    }));
   }
 
   AddImage(image:Image): Observable<any> {
@@ -85,11 +103,11 @@ export class RestService {
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
-    if(error.error instanceof ErrorEvent) 
+    if(error.error instanceof ErrorEvent)
     {
       errorMessage = error.error.message;
-    } 
-    else 
+    }
+    else
     {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
