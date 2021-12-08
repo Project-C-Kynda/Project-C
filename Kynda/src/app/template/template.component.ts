@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { User } from '../database/models/user';
 
 @Component({
@@ -25,8 +26,8 @@ export class TemplateComponent implements OnInit {
   user: any = [];
   currentUser = new User();
 
-  constructor(private http : HttpClient, private router:Router) { 
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+  constructor(private http : HttpClient, private router:Router, private cookieService: CookieService) { 
+    this.user = JSON.parse(this.cookieService.get('user') || '{}');
     this.currentUser = this.user[0];
   }
 
@@ -41,10 +42,10 @@ export class TemplateComponent implements OnInit {
     this.editorParts = document.getElementById('editor-parts');
     this.editorParts.style.display = 'none';
 
-    if (this.currentUser == undefined || this.currentUser.roleid != 1)
-    {
-      this.router.navigate(['/no-access']);
-    }
+  //  if (this.currentUser == undefined || this.currentUser.roleid != 1)
+  //  {
+  //    this.router.navigate(['/no-access']);
+  //  }
   }
 
   //Gets the HTML file from the templates folder

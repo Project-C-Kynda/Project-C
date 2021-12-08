@@ -1,26 +1,86 @@
-<div>
-<nav class="navbar navbar-expand navbar-light bg-light shadow-sm p-3 mb-1">
-    <a class="navbar-brand" href="#/admin-dashboard">
-        <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top" style='border-radius: 15%;' alt="">
-        Kynda Huisstijl Portaal
-      </a>
-      
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" [routerLink]="'../navbar'" [routerLinkActive]="['active']">Home</a>
-        <a class="nav-item nav-link" [routerLink]="'/image-library'" [routerLinkActive]="['active']">Beeldbank</a>
-        <a class="nav-item nav-link" [routerLink]="['null']" [routerLinkActive]="['active']">Handleiding</a>
-        <a class="nav-item nav-link" [routerLink]="['/template']" [routerLinkActive]="['active']">Template Editor</a>
-    </div>
+<div *ngIf="currentUser.roleid === 1">
+    <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: #fff6ff;">
+        <a class="navbar-brand" href="#/admin-dashboard">
+            <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top"
+                style='border-radius: 15%;' alt="">
+            Kynda Huisstijl Portaal
+        </a>
 
-    <div class="nav navbar-nav ml-auto justify-content-end">
-        <ul class="navbar-nav ml-auto">
-            <li class="navbar-text">
-                U bent in gelogd als: {{currentUser.accountname}}
-            </li>
-            <li class="nav-item">
-                <a class="nav-link btn btn-outline-secondary" [routerLink]="['/login']" routerLinkActive="router-link-active" >Logout</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" [routerLink]="'/client-dashboard'" [routerLinkActive]="['active']">Client dashboard</a>
+            <a class="nav-item nav-link" [routerLink]="'/image-library'" [routerLinkActive]="['active']">Beeldbank</a>
+            <a class="nav-item nav-link" [routerLink]="'/manual'" [routerLinkActive]="['active']">Handleiding</a>
+            <a class="nav-item nav-link" [routerLink]="['/template']" [routerLinkActive]="['active']">Template
+                Editor</a>
+        </div>
+
+        <div class="nav navbar-nav ml-auto justify-content-end">
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-text">
+                    U bent ingelogd als: {{currentUser.accountname}}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary" [routerLink]="['/login']"
+                        routerLinkActive="router-link-active">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div *ngIf="currentUser.roleid === 2">
+    <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: #fff6ff;">
+        <a class="navbar-brand" href="#">
+            <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top"
+                style='border-radius: 15%;' alt="">
+            Kynda Huisstijl Portaal
+        </a>
+
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" [routerLink]="['null']" [routerLinkActive]="['active']">Uitingen controleren</a>
+            <a class="nav-item nav-link" [routerLink]="'/account'" [routerLinkActive]="['active']">Gebruikersaccount toevoegen</a>
+            <a class="nav-item nav-link" [routerLink]="['null']" [routerLinkActive]="['active']">Dashboard aanpassen</a>
+        </div>
+
+        <div class="nav navbar-nav ml-auto justify-content-end">
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-text">
+                    U bent ingelogd als: {{currentUser.accountname}}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary" [routerLink]="['/login']"
+                        routerLinkActive="router-link-active">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div *ngIf="currentUser.roleid === 1">
+    <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: #fff6ff;">
+        <a class="navbar-brand" href="#">
+            <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top"
+                style='border-radius: 15%;' alt="">
+            Kynda Huisstijl Portaal
+        </a>
+
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" [routerLink]="'/admin-dashboard'" [routerLinkActive]="['active']">Admin dashboard</a>
+            <a class="nav-link" [routerLink]="['/template-upload']" routerLinkActive="router-link-active">Template toevoegen</a>
+            <a class="nav-link" [routerLink]="['/company-account']" routerLinkActive="router-link-active">Bedrijfsaccount toevoegen</a>
+            <a class="nav-link" [routerLink]="['/account']" routerLinkActive="router-link-active" >Gebruikersaccount toevoegen</a>
+        </div>
+
+        <div class="nav navbar-nav ml-auto justify-content-end">
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-text">
+                    U bent ingelogd als: {{currentUser.accountname}}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary" [routerLink]="['/login']"
+                        routerLinkActive="router-link-active">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>

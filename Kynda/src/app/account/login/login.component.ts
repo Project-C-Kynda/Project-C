@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { RestService } from '../../database/services/rest.service';
 
 @Component({
@@ -18,12 +19,12 @@ export class LoginComponent implements OnInit {
   userName!: FormControl;
   password!: FormControl;
 
-  constructor(private restservice: RestService, private router: Router) { }
+  constructor(private restservice: RestService, private router: Router, private cookieService: CookieService ) { }
 
   ngOnInit() {
     this.userName = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);
-    localStorage.removeItem('user');
+    this.cookieService.delete('user');
 
     this.login = new FormGroup(
       {
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   logout(){
-    localStorage.removeItem('user');
+    this.cookieService.delete('user');
     this.router.navigate(['/']);
   }
 
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         this.User = data;
         if(this.User.length >= 1 && this.User[0].password == pass) {
-          localStorage.setItem('user',JSON.stringify(this.User));
+          this.cookieService.set('user', JSON.stringify(this.User));
           if (this.User[0].roleid == 2)
           {
             this.router.navigate(['/admin-dashboard']);
