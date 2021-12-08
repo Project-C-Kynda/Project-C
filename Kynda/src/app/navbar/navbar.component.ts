@@ -15,10 +15,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(private cookieService: CookieService) {
     this.user = JSON.parse(this.cookieService.get('user') || '{}');
-    this.currentUser = new User()
-    this.currentUser.roleid = 1;
-    this.currentUser.accountname = 'Henkspermatank';
-    //this.currentUser = this.user[0];
+    console.log(this.cookieService.get('user'));
+    this.currentUser = this.user[0];
    }
 
   ngOnInit(): void {
