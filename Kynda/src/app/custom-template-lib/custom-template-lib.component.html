@@ -1,7 +1,7 @@
 <div class="background">
     <app-navbar></app-navbar>
     
-    <div id="no-template-container">
+    <div class="no-template-container">
         <div *ngIf="templates.length === 0">
             <div>
                 <h3 class="no-template-text">Er zijn momenteel geen templates voor review</h3>
@@ -10,8 +10,9 @@
     </div>
 
     <div class="template-container">
-        <div *ngIf="httpString != null">
-            <div [innerHtml]="loadedHtmlFile.innerHTML" class="template" id="download"></div>
+        <div *ngIf="selectedTemplate">
+            <p>{{selectedTemplate.name}}</p>
+            <iframe [src]="templateURL" title="template-container" id="download" width="800px" height="600px"></iframe>
             <button type="button" class="btn btn-dark btn-block" id="template-download" (click)="templateDownload()">Download Template</button>
         </div>
     </div>
@@ -25,7 +26,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <p>{{template.name}}</p>
-                                <button type="button" class="btn btn-dark btn-block" (click)="getHtmlFile(template)">Download</button>
+                                <button type="button" class="btn btn-dark btn-block" (click)="selectTemplate(template)">Download</button>
                             </div>
                         </div>
                     </div>

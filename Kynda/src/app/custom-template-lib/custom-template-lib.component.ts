@@ -4,6 +4,7 @@ import { Template, TEMPLATES } from "./template-dir"
 import { HttpClient } from '@angular/common/http';
 import { TemplateComponent } from '../template/template.component';
 import { DownloadService } from '../template-download/download.service';
+import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -16,13 +17,14 @@ export class CustomTemplateLibComponent implements OnInit {
   templates = TEMPLATES;
   downloadTemplates: Template[] = [];
   reviewTemplates: Template[] = [];
-  
+  selectedTemplate?: Template;
+  templateURL?: SafeResourceUrl;
 
   loadedHtmlFile : any;
   httpString : any;
   htmlString: any;
 
-  constructor(private restservice : RestService, private http : HttpClient, private download:DownloadService) { 
+  constructor(private restservice : RestService, private http : HttpClient, private download:DownloadService, private sanitizer:DomSanitizer) { 
   }
 
   ngOnInit(): void {
@@ -42,22 +44,9 @@ export class CustomTemplateLibComponent implements OnInit {
     }
   }
   
-  getHtmlFile(template : Template)
-  {
-    this.http.get(template.ref,{ responseType: 'text' })
-      .subscribe((data : string) => {
-        this.httpString = data;
-        this.htmlFromString(data)
-      }
-    );
-  }
-
-  //Converts the HTML string from the template file into a new document element that can be edited
-  htmlFromString(htmlString : string) 
-  {
-    this.loadedHtmlFile =  document.createElement('template');
-    htmlString = htmlString.trim();
-    this.loadedHtmlFile.innerHTML = htmlString;
+  selectTemplate(template : Template){
+    this.selectedTemplate = template;
+    this.templateURL = this.sanitizer.bypassSecurityTrustResourceUrl(template.ref);
   }
 
   templateDownload(){
