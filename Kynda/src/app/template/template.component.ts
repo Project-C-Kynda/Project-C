@@ -42,10 +42,10 @@ export class TemplateComponent implements OnInit {
     this.editorParts = document.getElementById('editor-parts');
     this.editorParts.style.display = 'none';
 
-  //  if (this.currentUser == undefined || this.currentUser.roleid != 1)
-  //  {
-  //    this.router.navigate(['/no-access']);
-  //  }
+    if (this.currentUser == undefined || this.currentUser.roleid != 1)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
 
   //Gets the HTML file from the templates folder
