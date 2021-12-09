@@ -31,7 +31,7 @@ export class RestService {
     return this.httpClient.get(`${this.REST_API}/companies`);
   }
 
-  GetCompany(companyId: string) {
+  GetCompanyById(companyId: number) {
       return this.httpClient.get(`${this.REST_API}/company/${companyId}`);
   }
 
@@ -46,10 +46,14 @@ export class RestService {
     return this.httpClient.post(`${this.REST_API}/company`, body, {'headers':headers})
   }
 
+  GetUser(accName:String) {
+    return this.httpClient.get(`${this.REST_API}/user/${accName}`);
+  }
+
   getUser(accName:String): Observable<any> {
     return this.httpClient.get(`${this.REST_API}/user/${accName}`, {observe: 'response'}).pipe(map(data => {
         console.log("Response code: " + data.status)
-        return data.status;
+        return data;
     }));
   }
 
