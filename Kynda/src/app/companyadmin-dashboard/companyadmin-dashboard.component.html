@@ -1,6 +1,16 @@
 <div class="template-review">
-    <div class="card">
-        <p class="template-text" *ngFor="let template of templates"></p>
-        <button class="btn btn-dark">Controleren</button>
+    <div class="container-fluid md-4">
+        <div class="row justify-content-center row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            <div *ngFor="let template of templates">
+                <div class="col mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">{{template.name}}</h4>
+                            <button type="button" class="btn btn-dark btn-block">Controleren</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

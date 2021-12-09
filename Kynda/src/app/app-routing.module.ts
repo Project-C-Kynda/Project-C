@@ -15,6 +15,7 @@ import { CustomTemplateLibComponent } from './custom-template-lib/custom-templat
 import { ManualComponent } from './manual/manual.component';
 import { NoAccessComponent } from './account/no-access/no-access.component';
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
+import { CompanyadminDashboardComponent } from './companyadmin-dashboard/companyadmin-dashboard.component';
 
 const routes: Routes = [
   { path: '',
@@ -36,6 +37,8 @@ const routes: Routes = [
   {path: "manual", component: ManualComponent},
   {path: "no-access", component: NoAccessComponent},
   {path: "forgot-password", component: ForgotPasswordComponent},
+  {path: "companyadmin-dashboard", component: CompanyadminDashboardComponent},
+  
 
 ];
 

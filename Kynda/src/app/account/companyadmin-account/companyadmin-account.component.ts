@@ -34,7 +34,7 @@ export class CompanyadminAccountComponent implements OnInit {
       'username': this.username,
       'emailAddress': this.emailAddress
     });
-    this.company = this.restservice.getCompany("Apple");
+    this.company = this.restservice.getCompany("APple");
   }
 
   generatePassword(length: number){
