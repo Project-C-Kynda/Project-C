@@ -6,15 +6,28 @@
     height: 100vh;
 }
 
-.review-container{
-    width: 45%;
-}
-
 .no-template-text{
     text-align: center;
     margin: auto;
     width: auto;
     margin-top: 15vh;
+}
+
+.template-container{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 100px;
+    left: 45vw;
+    width: 52vw;
+}
+
+#template-download{
+    width: 200px;
+}
+
+.review-container{
+    width: 45%;
 }
 
 .template-header-text{
@@ -23,3 +36,5 @@
     width: auto;
     margin-top: 1em;
 }
+
+
