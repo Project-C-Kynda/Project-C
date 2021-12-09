@@ -40,8 +40,9 @@ export class LoginComponent implements OnInit {
 
 
   Login(name: string, pass: string) {
-    this.restservice.getUser(name)
+    this.restservice.GetUser(name)
       .subscribe(data => {
+        console.log(data);
         this.User = data;
         if(this.User.length >= 1 && this.User[0].password == pass) {
           localStorage.setItem('user',JSON.stringify(this.User));
