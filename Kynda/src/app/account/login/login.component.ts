@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
           }
           else
           {
-            this.router.navigate(['/template']);
+            this.router.navigate(['/client-dashboard']);
           }
         }
         return this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
