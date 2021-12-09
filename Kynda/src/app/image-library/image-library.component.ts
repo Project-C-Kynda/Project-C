@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Image } from '../database/models/image';
 import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
@@ -17,8 +18,8 @@ export class ImageLibraryComponent implements OnInit {
   user: any = [];
   currentUser = new User();
 
-  constructor(private restservice:RestService, private router: Router) { 
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+  constructor(private restservice:RestService, private router: Router, private cookieService: CookieService) { 
+    this.user = JSON.parse(this.cookieService.get('user') || '{}');
     this.currentUser = this.user[0];
   }
 
