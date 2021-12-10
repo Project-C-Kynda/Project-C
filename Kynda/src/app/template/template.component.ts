@@ -42,7 +42,7 @@ export class TemplateComponent implements OnInit {
     this.editorParts = document.getElementById('editor-parts');
     this.editorParts.style.display = 'none';
 
-    if (this.currentUser == undefined || this.currentUser.roleid != 1)
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
     {
       this.router.navigate(['/no-access']);
     }

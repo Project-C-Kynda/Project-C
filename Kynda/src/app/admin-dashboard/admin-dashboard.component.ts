@@ -26,7 +26,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    if (this.currentUser == undefined || this.currentUser.roleid != 0)
     {
       this.router.navigate(['/no-access']);
     }
