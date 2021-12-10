@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Company } from '../database/models/company';
 import { RestService } from '../database/services/rest.service';
 
 @Component({

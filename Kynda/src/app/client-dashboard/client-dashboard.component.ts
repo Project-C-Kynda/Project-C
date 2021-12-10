@@ -17,10 +17,10 @@ export class ClientDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTemplates("1");
+    this.getTemplates();
   }
 
-  getTemplates(companyId:string) {
+  getTemplates(companyId:string = "0") {
     //JSON.parse(localStorage.getItem('user') || '{}').companyid
     console.log('running');
     this.restservice.GetTemplates(companyId)
