@@ -1,24 +1,5 @@
+<app-navbar></app-navbar>
 <div class="background">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="/admin-dashboard">Admin dashboard</a>
-          <div class="navbar-nav">
-            <a class="nav-link" [routerLink]="['/template-upload']" routerLinkActive="router-link-active">Template toevoegen</a>
-            <a class="nav-link" [routerLink]="['/company-account']" routerLinkActive="router-link-active">Bedrijfsaccount toevoegen</a>
-            <a class="nav-link" [routerLink]="['/account']" routerLinkActive="router-link-active" >Gebruikersaccount toevoegen</a>
-          </div>
-
-        <div class="nav navbar-nav ml-auto justify-content-end">
-            <ul class="navbar-nav ml-auto">
-                <li class="navbar-text">
-                    U bent in gelogd als: {{currentUser.accountname}}
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-secondary" [routerLink]="['/login']" routerLinkActive="router-link-active" >Logout</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    
     <div class="card">
         <h2 class="card-title text-center">Nieuw bedrijfsaccount aanmaken</h2>
         <form class="needs-validation" [formGroup]="addCompany" novalidate>

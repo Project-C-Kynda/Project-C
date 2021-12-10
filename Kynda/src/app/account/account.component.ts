@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
 
@@ -27,8 +28,8 @@ export class AccountComponent implements OnInit {
   userlist: any = [];
   currentUser = new User();
 
-  constructor(private restservice: RestService, private formBuilder: FormBuilder, private router: Router) {
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+  constructor(private restservice: RestService, private formBuilder: FormBuilder, private router: Router, private cookieService: CookieService) {
+    this.user = JSON.parse(this.cookieService.get('user') || '{}');
     this.currentUser = this.userlist[0];
    }
 
