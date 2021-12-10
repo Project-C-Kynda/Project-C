@@ -5,7 +5,7 @@ import { Image } from './models/image';
 @Component({
   selector: 'app-database',
   templateUrl: './database.component.html',
-  styleUrls: ['./database.component.css']
+  styleUrls: ['./database.component.scss']
 })
 export class DatabaseComponent implements OnInit {
 

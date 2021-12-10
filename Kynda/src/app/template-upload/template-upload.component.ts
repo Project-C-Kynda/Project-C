@@ -6,7 +6,7 @@ import { TemplateUploadService } from './template-upload.service';
 @Component({
 	selector: 'app-template-upload',
 	templateUrl: './template-upload.component.html',
-	styleUrls: ['./template-upload.component.css']
+	styleUrls: ['./template-upload.component.scss']
 })
 export class TemplateUploadComponent implements OnInit {
 

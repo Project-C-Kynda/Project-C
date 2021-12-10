@@ -4,7 +4,7 @@ import { RestService } from '../database/services/rest.service';
 @Component({
   selector: 'app-manual',
   templateUrl: './manual.component.html',
-  styleUrls: ['./manual.component.css']
+  styleUrls: ['./manual.component.scss']
 })
 export class ManualComponent implements OnInit {
 
