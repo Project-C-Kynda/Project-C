@@ -8,7 +8,7 @@ import { RestService } from '../database/services/rest.service';
 @Component({
   selector: 'app-image-library',
   templateUrl: './image-library.component.html',
-  styleUrls: ['./image-library.component.css']
+  styleUrls: ['./image-library.component.scss']
 })
 export class ImageLibraryComponent implements OnInit {
 

@@ -14,6 +14,7 @@ import { CustomTemplateLibComponent } from './custom-template-lib/custom-templat
 import { ManualComponent } from './manual/manual.component';
 import { NoAccessComponent } from './account/no-access/no-access.component';
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
+import { ClientReviewComponent } from './client-review/client-review.component';
 
 const routes: Routes = [
   { path: '',
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: "manual", component: ManualComponent},
   {path: "no-access", component: NoAccessComponent},
   {path: "forgot-password", component: ForgotPasswordComponent},
+  {path: "client-review", component: ClientReviewComponent},
 
 ];
 
