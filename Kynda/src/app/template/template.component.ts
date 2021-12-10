@@ -7,7 +7,7 @@ import { User } from '../database/models/user';
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
-  styleUrls: ['./template.component.css']
+  styleUrls: ['./template.component.scss']
 })
 
 export class TemplateComponent implements OnInit {

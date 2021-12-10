@@ -10,7 +10,7 @@ import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platf
 @Component({
   selector: 'app-custom-template-lib',
   templateUrl: './custom-template-lib.component.html',
-  styleUrls: ['./custom-template-lib.component.css']
+  styleUrls: ['./custom-template-lib.component.scss']
 })
 export class CustomTemplateLibComponent implements OnInit {
 

@@ -23,6 +23,7 @@ import { ManualComponent } from './manual/manual.component';
 
 import { NoAccessComponent } from './account/no-access/no-access.component';
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
+import { ClientReviewComponent } from './client-review/client-review.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ForgotPasswordComponent } from './account/forgot-password/forgot-passwo
     ManualComponent,
     NoAccessComponent,
     ForgotPasswordComponent,
+    ClientReviewComponent,
   ],
   imports: [
     BrowserModule,

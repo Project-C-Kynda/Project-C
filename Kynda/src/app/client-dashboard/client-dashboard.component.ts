@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-client-dashboard',
   templateUrl: './client-dashboard.component.html',
-  styleUrls: ['./client-dashboard.component.css']
+  styleUrls: ['./client-dashboard.component.scss']
 })
 export class ClientDashboardComponent implements OnInit {
 
