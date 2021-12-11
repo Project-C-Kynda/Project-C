@@ -37,7 +37,7 @@ export class ClientReviewComponent implements OnInit {
     {
       this.router.navigate(['/no-access']);
     }
-    }
+  }
 
   splitTemplates(){
     for (let i = 0; i < TEMPLATES.length; i++) {
