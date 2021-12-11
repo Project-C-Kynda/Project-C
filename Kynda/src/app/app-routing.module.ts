@@ -16,6 +16,7 @@ import { ManualComponent } from './manual/manual.component';
 import { NoAccessComponent } from './account/no-access/no-access.component';
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
 import { CompanyadminDashboardComponent } from './companyadmin-dashboard/companyadmin-dashboard.component';
+import { ReviewTemplateComponent } from './companyadmin-dashboard/review-template/review-template.component';
 
 const routes: Routes = [
   { path: '',
@@ -38,7 +39,7 @@ const routes: Routes = [
   {path: "no-access", component: NoAccessComponent},
   {path: "forgot-password", component: ForgotPasswordComponent},
   {path: "companyadmin-dashboard", component: CompanyadminDashboardComponent},
-  
+  {path: "review-template", component: ReviewTemplateComponent},
 
 ];
 

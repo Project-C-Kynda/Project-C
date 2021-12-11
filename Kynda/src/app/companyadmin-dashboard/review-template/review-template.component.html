@@ -1,0 +1,10 @@
+<div class="page-preview">
+    <div *ngIf="httpString != null" class="content col-8">
+        <div [innerHtml]="loadedHtmlFile.innerHTML"></div>
+    </div>
+</div>
+
+<div class="control-buttons">
+    <button class="btn btn-succes">Goedgekeurd</button>
+    <button class="btn btn-danger">Afgekeurd</button>
+</div>

@@ -68,7 +68,7 @@ export class CompanyadminAccountComponent implements OnInit {
   {
     this.user.companyid = this.company.id;
     this.user.password =  this.generatePassword(8);
-    this.user.roleid = 2;
+    this.user.roleid = 1;
     this.addUser();
     this.toggleShow();
   }

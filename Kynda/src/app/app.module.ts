@@ -24,6 +24,7 @@ import { ManualComponent } from './manual/manual.component';
 
 import { NoAccessComponent } from './account/no-access/no-access.component';
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
+import { ReviewTemplateComponent } from './companyadmin-dashboard/review-template/review-template.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ForgotPasswordComponent } from './account/forgot-password/forgot-passwo
     ManualComponent,
     NoAccessComponent,
     ForgotPasswordComponent,
+    ReviewTemplateComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RestService } from '../database/services/rest.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class CompanyadminDashboardComponent implements OnInit {
 
   templates: any = [];
 
-  constructor(private restservice: RestService) { }
+  constructor(private restservice: RestService, private router: Router) { }
 
   ngOnInit(): void {
     this.getTemplates();
@@ -24,6 +25,11 @@ export class CompanyadminDashboardComponent implements OnInit {
       console.log(data);
       this.templates = data;
     })
+  }
+
+  reviewTemplate(templateName: string) {
+    localStorage.setItem('Name', JSON.stringify(templateName));
+    this.router.navigate(['/review-template']);
   }
 
 }
