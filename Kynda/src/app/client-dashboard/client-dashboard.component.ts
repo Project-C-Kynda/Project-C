@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-client-dashboard',
   templateUrl: './client-dashboard.component.html',
-  styleUrls: ['./client-dashboard.component.css']
+  styleUrls: ['./client-dashboard.component.scss']
 })
 export class ClientDashboardComponent implements OnInit {
 
@@ -17,10 +17,10 @@ export class ClientDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTemplates("1");
+    this.getTemplates();
   }
 
-  getTemplates(companyId:string) {
+  getTemplates(companyId:string = "0") {
     //JSON.parse(localStorage.getItem('user') || '{}').companyid
     console.log('running');
     this.restservice.GetTemplates(companyId)

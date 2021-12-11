@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Company } from '../database/models/company';
 import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
@@ -7,7 +8,7 @@ import { RestService } from '../database/services/rest.service';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent implements OnInit {
 
@@ -18,9 +19,9 @@ export class AdminDashboardComponent implements OnInit {
   user: any = [];
   currentUser = new User();
 
-  constructor(private restservice : RestService, private router: Router) { 
+  constructor(private restservice : RestService, private router: Router, private cookieService: CookieService) { 
     this.getCompanies();
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.user = JSON.parse(this.cookieService.get('user') || '{}');
     this.currentUser = this.user[0];
   }
 

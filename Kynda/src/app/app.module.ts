@@ -13,6 +13,7 @@ import { DatabaseComponent } from './database/database.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './account/login/login.component';
 import { AccountComponent } from './account/account.component';
+import { CookieService } from 'ngx-cookie-service';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
@@ -25,6 +26,7 @@ import { ManualComponent } from './manual/manual.component';
 import { NoAccessComponent } from './account/no-access/no-access.component';
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
 import { ReviewTemplateComponent } from './companyadmin-dashboard/review-template/review-template.component';
+import { ClientReviewComponent } from './client-review/client-review.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,11 @@ import { ReviewTemplateComponent } from './companyadmin-dashboard/review-templat
     ManualComponent,
     NoAccessComponent,
     ForgotPasswordComponent,
+<<<<<<< HEAD
     ReviewTemplateComponent,
+=======
+    ClientReviewComponent,
+>>>>>>> main
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,7 @@ import { ReviewTemplateComponent } from './companyadmin-dashboard/review-templat
     RouterModule,
     NgxPaginationModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

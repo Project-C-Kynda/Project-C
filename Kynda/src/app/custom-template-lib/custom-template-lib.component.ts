@@ -4,28 +4,27 @@ import { Template, TEMPLATES } from "./template-dir"
 import { HttpClient } from '@angular/common/http';
 import { TemplateComponent } from '../template/template.component';
 import { DownloadService } from '../template-download/download.service';
+import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-custom-template-lib',
   templateUrl: './custom-template-lib.component.html',
-  styleUrls: ['./custom-template-lib.component.css']
+  styleUrls: ['./custom-template-lib.component.scss']
 })
 export class CustomTemplateLibComponent implements OnInit {
 
   templates = TEMPLATES;
   downloadTemplates: Template[] = [];
   reviewTemplates: Template[] = [];
-  
-  selectorParts : any;
-  editorParts : any;
-  loadedHtmlFile : any;
-  paragraphs : any;
-  headings : any;
-  httpString : any;
-  htmlDoc : any;
+  selectedTemplate?: Template;
+  templateURL?: SafeResourceUrl;
 
-  constructor(private restservice : RestService, private http : HttpClient, private download:DownloadService) { 
+  loadedHtmlFile : any;
+  httpString : any;
+  htmlString: any;
+
+  constructor(private restservice : RestService, private http : HttpClient, private download:DownloadService, private sanitizer:DomSanitizer) { 
   }
 
   ngOnInit(): void {
@@ -45,21 +44,12 @@ export class CustomTemplateLibComponent implements OnInit {
     }
   }
   
-  getHtmlFile(template : Template)
-  {
-    this.http.get(template.ref,{ responseType: 'text' })
-      .subscribe((data : string) => {
-        this.httpString = data;
-        this.htmlFromString(data)
-      }
-    );
+  selectTemplate(template : Template){
+    this.selectedTemplate = template;
+    this.templateURL = this.sanitizer.bypassSecurityTrustResourceUrl(template.ref);
   }
 
-  //Converts the HTML string from the template file into a new document element that can be edited
-  htmlFromString(htmlString : string) 
-  {
-    this.loadedHtmlFile =  document.createElement('template');
-    htmlString = htmlString.trim();
-    this.loadedHtmlFile.innerHTML = htmlString;
+  templateDownload(){
+    this.download.convertToPDF('download');
   }
 }
