@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Company } from 'src/app/database/models/company';
 import { User } from '../../database/models/user';
 import { RestService } from '../../database/services/rest.service';
@@ -15,8 +17,8 @@ export class CompanyadminAccountComponent implements OnInit {
   selectedOption!: string;
   id: any = 0;
 
-  users!: User[];
   user = new User();
+  currentUser: any;
 
   userForm!: FormGroup;
   username!: FormControl;
@@ -24,7 +26,9 @@ export class CompanyadminAccountComponent implements OnInit {
   company!: any;
 
 
-  constructor(private restservice: RestService, private formBuilder: FormBuilder) { }
+  constructor(private restservice: RestService, private formBuilder: FormBuilder, private cookieService: CookieService, private router: Router) {
+    this.currentUser = JSON.parse(cookieService.get('user' || '{}'))[0];
+   }
 
   ngOnInit() {
     this.username = new FormControl(null,Validators.required);
@@ -34,7 +38,12 @@ export class CompanyadminAccountComponent implements OnInit {
       'username': this.username,
       'emailAddress': this.emailAddress
     });
-    this.company = this.restservice.getCompany("APple");
+    this.company = this.restservice.getCompany("");
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 0)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
 
   generatePassword(length: number){
@@ -68,7 +77,7 @@ export class CompanyadminAccountComponent implements OnInit {
   {
     this.user.companyid = this.company.id;
     this.user.password =  this.generatePassword(8);
-    this.user.roleid = 1;
+    this.user.roleid = 2;
     this.addUser();
     this.toggleShow();
   }
