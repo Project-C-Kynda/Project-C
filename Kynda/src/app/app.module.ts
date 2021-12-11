@@ -47,11 +47,8 @@ import { ClientReviewComponent } from './client-review/client-review.component';
     ManualComponent,
     NoAccessComponent,
     ForgotPasswordComponent,
-<<<<<<< HEAD
     ReviewTemplateComponent,
-=======
     ClientReviewComponent,
->>>>>>> main
   ],
   imports: [
     BrowserModule,

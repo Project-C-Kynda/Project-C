@@ -39,12 +39,9 @@ const routes: Routes = [
   {path: "manual", component: ManualComponent},
   {path: "no-access", component: NoAccessComponent},
   {path: "forgot-password", component: ForgotPasswordComponent},
-<<<<<<< HEAD
   {path: "companyadmin-dashboard", component: CompanyadminDashboardComponent},
   {path: "review-template", component: ReviewTemplateComponent},
-=======
   {path: "client-review", component: ClientReviewComponent},
->>>>>>> main
 
 ];
 
