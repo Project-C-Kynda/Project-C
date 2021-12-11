@@ -24,7 +24,7 @@ export class ImageLibraryComponent implements OnInit {
   ngOnInit(): void {
     this.getImages();
 
-    if (this.currentUser == undefined || this.currentUser.roleid != 1)
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
     {
       this.router.navigate(['/no-access']);
     }
