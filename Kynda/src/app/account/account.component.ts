@@ -46,7 +46,7 @@ export class AccountComponent implements OnInit {
 
     this.getCompanies();
 
-    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    if (this.currentUser == undefined || this.currentUser.roleid != 1)
     {
       this.router.navigate(['/no-access']);
     }
@@ -95,7 +95,7 @@ export class AccountComponent implements OnInit {
 
   makeUser()
   {
-    this.user.companyid = this.id.id || 0;
+    this.user.companyid = this.currentUser.companyid;
     this.user.password =  this.generatePassword(8);
     this.user.roleid = 2;
     this.addUser();
