@@ -38,7 +38,11 @@ export class CompanyadminAccountComponent implements OnInit {
       'username': this.username,
       'emailAddress': this.emailAddress
     });
-    this.company = this.restservice.getCompany("");
+
+    this.company = this.restservice.getCompany(
+      JSON.parse(this.cookieService.get('Company' || '{}'))[0]
+      );
+    this.cookieService.delete('Company');
 
     if (this.currentUser == undefined || this.currentUser.roleid != 0)
     {
