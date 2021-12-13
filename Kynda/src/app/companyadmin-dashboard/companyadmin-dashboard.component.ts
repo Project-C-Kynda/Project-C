@@ -27,7 +27,7 @@ export class CompanyadminDashboardComponent implements OnInit {
   }
 
   getTemplates(companyId:string = "1") {
-    console.log('running');
+    //TODO: Set GetTemplates to GetPendingTemplates
     this.restservice.GetTemplates(companyId)
     .subscribe(data => {
       console.log(data);
@@ -36,7 +36,7 @@ export class CompanyadminDashboardComponent implements OnInit {
   }
 
   reviewTemplate(templateName: string) {
-    localStorage.setItem('Name', JSON.stringify(templateName));
+    this.cookieservice.set('Name', JSON.stringify(templateName));
     this.router.navigate(['/review-template']);
   }
 
