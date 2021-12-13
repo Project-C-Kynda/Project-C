@@ -29,14 +29,13 @@
 
 <div *ngIf="currentUser.roleid === 2">
     <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: #ffebff;">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/companyadmin-dashboard">
             <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top"
                 style='border-radius: 15%;' alt="">
             Bedrijfsdashboard
         </a>
 
         <div class="navbar-nav">
-            <a class="nav-item nav-link" [routerLink]="['null']" [routerLinkActive]="['active']">Uitingen controleren</a>
             <a class="nav-item nav-link" [routerLink]="'/account'" [routerLinkActive]="['active']">Gebruikersaccount toevoegen</a>
         </div>
 
