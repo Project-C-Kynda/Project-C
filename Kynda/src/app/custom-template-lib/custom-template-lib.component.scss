@@ -1,0 +1,40 @@
+.background{
+    background-image: 
+        linear-gradient(rgba(255, 0, 187), transparent), 
+        linear-gradient(93deg, transparent, rgba(19, 43, 200, 0.89 )), 
+        linear-gradient(60deg, rgb(210, 46, 18), transparent);
+    height: 100vh;
+}
+
+.no-template-text{
+    text-align: center;
+    margin: auto;
+    width: auto;
+    margin-top: 15vh;
+}
+
+.template-container{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 100px;
+    left: 45vw;
+    width: 52vw;
+}
+
+#template-download{
+    width: 200px;
+}
+
+.review-container{
+    width: 45%;
+}
+
+.template-header-text{
+    text-align: center;
+    margin: auto;
+    width: auto;
+    margin-top: 1em;
+}
+
+

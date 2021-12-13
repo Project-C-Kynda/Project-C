@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { User } from '../database/models/user';
 import { TemplateUploadService } from './template-upload.service';
 
 @Component({
 	selector: 'app-template-upload',
 	templateUrl: './template-upload.component.html',
-	styleUrls: ['./template-upload.component.css']
+	styleUrls: ['./template-upload.component.scss']
 })
 export class TemplateUploadComponent implements OnInit {
 
@@ -12,11 +15,20 @@ export class TemplateUploadComponent implements OnInit {
 	completeLoad: boolean = false;
 	loading: boolean = false; // Flag variable
 	file!: File; // Variable to store file
-
+	
+	user: any = [];
+	currentUser = new User();
 	// Inject service
-	constructor(private templateUploadService: TemplateUploadService) { }
+	constructor(private templateUploadService: TemplateUploadService, private router: Router, private cookieService: CookieService) {
+		this.user = JSON.parse(this.cookieService.get('user') || '{}');
+		this.currentUser = this.user[0];
+	}
 
 	ngOnInit(): void {
+		if (this.currentUser == undefined || this.currentUser.roleid != 2)
+		{
+		this.router.navigate(['/no-access']);
+		}
 	}
 
 	// On file Select

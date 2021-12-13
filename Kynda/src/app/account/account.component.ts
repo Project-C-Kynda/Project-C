@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
 
@@ -23,8 +25,13 @@ export class AccountComponent implements OnInit {
   emailAddress!: FormControl;
   company!: FormControl;
 
+  userlist: any = [];
+  currentUser = new User();
 
-  constructor(private restservice: RestService, private formBuilder: FormBuilder) { }
+  constructor(private restservice: RestService, private formBuilder: FormBuilder, private router: Router, private cookieService: CookieService) {
+    this.user = JSON.parse(this.cookieService.get('user') || '{}');
+    this.currentUser = this.userlist[0];
+   }
 
   ngOnInit() {
     this.username = new FormControl(null,Validators.required);
@@ -38,8 +45,13 @@ export class AccountComponent implements OnInit {
     });
 
     this.getCompanies();
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
-  
+
   changeValue(e: any): void {
     this.id = this.companies.find(function (c: { name: any; }) {
         return c.name == e.target.value;
@@ -83,7 +95,7 @@ export class AccountComponent implements OnInit {
 
   makeUser()
   {
-    this.user.companyid = this.id.id;
+    this.user.companyid = this.id.id || 0;
     this.user.password =  this.generatePassword(8);
     this.user.roleid = 2;
     this.addUser();
@@ -96,8 +108,8 @@ export class AccountComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
     })
-  }  
-  
+  }
+
 //===================EMAIL===================
   sendMail()
   {

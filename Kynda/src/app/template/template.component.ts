@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { User } from '../database/models/user';
 
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
-  styleUrls: ['./template.component.css']
+  styleUrls: ['./template.component.scss']
 })
 
 export class TemplateComponent implements OnInit {
@@ -13,21 +16,36 @@ export class TemplateComponent implements OnInit {
   selectorParts: any;
   //button : any;
   //inputBoxFileNaam : any;
-  inputFileNaam : any;
+  inputFileNaam: any;
 
   loadedHtmlFile : any;
   paragraphs : any;
   headings : any;
   httpString : any;
 
-  constructor(private http : HttpClient) { }
+  user: any = [];
+  currentUser = new User();
+
+  constructor(private http : HttpClient, private router:Router, private cookieService: CookieService) { 
+    this.user = JSON.parse(this.cookieService.get('user') || '{}');
+    this.currentUser = this.user[0];
+  }
 
 
-  
-  ngOnInit(): void 
+
+  ngOnInit(): void
   {
+    const name = localStorage.getItem('templateName')?.replace(/['"]+/g, '');
+    this.inputFileNaam = name;
+    localStorage.removeItem('templateName');
+    this.getHtmlFile();
     this.editorParts = document.getElementById('editor-parts');
     this.editorParts.style.display = 'none';
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 1)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
 
   //Gets the HTML file from the templates folder
@@ -41,7 +59,7 @@ export class TemplateComponent implements OnInit {
               this.htmlFromString(this.httpString)
               this.selectorParts = document.getElementById("selector-parts")
               this.selectorParts.remove();
-              
+
               //this.inputBoxFileNaam = document.getElementById('file_naam');
               //this.button = document.getElementById('load_button')
               //this.button.remove();
@@ -52,7 +70,7 @@ export class TemplateComponent implements OnInit {
   }
 
   //Converts the HTML string from the template file into a new document element that can be edited
-   htmlFromString(htmlString : string) 
+   htmlFromString(htmlString : string)
    {
     this.loadedHtmlFile =  document.createElement('template');
     htmlString = htmlString.trim();
