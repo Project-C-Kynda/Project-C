@@ -1,0 +1,17 @@
+.container{
+    width: 80vw;
+    margin-left: 10vw;
+    height: 90vh;
+}
+
+.page-preview{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.control-buttons{
+    margin-left: 27vw;
+}
+
+.btn{
+    margin-left: 2vw;
+}

@@ -22,6 +22,12 @@ export class ReviewTemplateComponent implements OnInit {
     this.inputFileName = this.cookieService.get('Name')?.replace(/['"]+/g, '');
     this.cookieService.delete('Name');
     this.getHtmlFile();
+
+    this.currentUser = JSON.parse(this.cookieService.get('user' || '{}'))[0];
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 2){
+      this.router.navigate(['/no-access']);
+    }
   }
 
   //Gets the HTML file from the templates folder
@@ -45,5 +51,15 @@ export class ReviewTemplateComponent implements OnInit {
   }
 
   //TODO: Add function to change the status of a template to 'Approved' or 'Disapproved'.
+  reviewTemplate(reviewStatus: string){
+    if (reviewStatus == 'approved'){
+      this.router.navigate(['/companyadmin-dashboard'])
+    }
+
+    if (reviewStatus == 'disapproved')
+    {
+      this.router.navigate(['/companyadmin-dashboard'])
+    }
+  }
   
 }
