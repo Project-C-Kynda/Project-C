@@ -1,16 +1,16 @@
-Gebruiker
+Gebruiker == 2
 -------------------- 
 - Templates bewerken
 - Templates verzenden voor controle
 - Templates downloaden
 - Handleiding inzien
 
-Bedrijfsadmin
+Bedrijfsadmin == 1
 --------------------
 - Templates goedkeuren of afkeuren
 - Nieuwe gebruikers aanmaken
 
-Kynda admin
+Kynda admin == 0
 --------------------
 - Bedrijven aanmaken
 - Templates per bedrijf uploaden

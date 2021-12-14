@@ -9,6 +9,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Observable , throwError } from 'rxjs';
 import { Login } from '../models/login';
 import { Template } from '../models/template';
+import { Review } from '../models/review';
 
 
 @Injectable({
@@ -115,6 +116,16 @@ export class RestService {
 
   SendMail(): Observable<any> {
     return this.httpClient.get(`${this.REST_API}/sendmail`)
+  }
+
+  GetPendingTemplates(companyid: string) {
+    return this.httpClient.get(`${this.REST_API}/pending-templates/${companyid}`)
+  }
+
+  UpdateTemplateStatus(review: Review): Observable<any>{
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(review)
+    return this.httpClient.post(`${this.REST_API}/update`, body, {'headers': headers});
   }
 
   handleError(error: HttpErrorResponse) {

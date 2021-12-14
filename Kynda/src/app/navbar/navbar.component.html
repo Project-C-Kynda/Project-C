@@ -1,5 +1,5 @@
-<div *ngIf="currentUser.roleid === 1">
-    <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: #ffebff;">
+<div *ngIf="currentUser.roleid === 2">
+    <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: rgba(255, 255, 255, 1);">
         <a class="navbar-brand" href="/client-dashboard">
             <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top"
                 style='border-radius: 15%;' alt="">
@@ -27,8 +27,8 @@
     </nav>
 </div>
 
-<div *ngIf="currentUser.roleid === 2">
-    <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: #ffebff;">
+<div *ngIf="currentUser.roleid === 1">
+    <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: rgba(255, 255, 255, 0.8);">
         <a class="navbar-brand" href="/companyadmin-dashboard">
             <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top"
                 style='border-radius: 15%;' alt="">
@@ -53,8 +53,8 @@
     </nav>
 </div>
 
-<div *ngIf="currentUser.roleid === 3">
-    <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: #ffebff;">
+<div *ngIf="currentUser.roleid === 0">
+    <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: rgba(255, 255, 255, 0.2);">
         <a class="navbar-brand" href="/admin-dashboard">
             <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top"
                 style='border-radius: 15%;' alt="">

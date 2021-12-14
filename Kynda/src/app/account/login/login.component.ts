@@ -43,16 +43,14 @@ export class LoginComponent implements OnInit {
   Login(name: string, pass: string) {
     this.restservice.GetUser(name)
       .subscribe(data => {
-        console.log(data);
         this.User = data;
         if(this.User.length >= 1 && this.User[0].password == pass) {
           this.cookieService.set('user', JSON.stringify(this.User));
-          console.log(this.cookieService.get('user'));
-          if (this.User[0].roleid == 2)
+          if (this.User[0].roleid == 1)
           {
             this.router.navigate(['/companyadmin-dashboard']);
           }
-          else if (this.User[0].roleid == 1)
+          else if (this.User[0].roleid == 2)
           {
             this.router.navigate(['/client-dashboard']);
           }

@@ -17,20 +17,16 @@ export class AccountComponent implements OnInit {
   id: any = 0;
   companies: any = [];
 
-  users!: User[];
   user = new User();
 
   userForm!: FormGroup;
   username!: FormControl;
   emailAddress!: FormControl;
   company!: FormControl;
-
-  userlist: any = [];
   currentUser = new User();
 
   constructor(private restservice: RestService, private formBuilder: FormBuilder, private router: Router, private cookieService: CookieService) {
-    this.user = JSON.parse(this.cookieService.get('user') || '{}');
-    this.currentUser = this.userlist[0];
+    this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
    }
 
   ngOnInit() {
@@ -46,7 +42,7 @@ export class AccountComponent implements OnInit {
 
     this.getCompanies();
 
-    if (this.currentUser == undefined || this.currentUser.roleid != 1)
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
     {
       this.router.navigate(['/no-access']);
     }
@@ -97,7 +93,7 @@ export class AccountComponent implements OnInit {
   {
     this.user.companyid = this.currentUser.companyid;
     this.user.password =  this.generatePassword(8);
-    this.user.roleid = 2;
+    this.user.roleid = 1;
     this.addUser();
     this.toggleShow();
   }

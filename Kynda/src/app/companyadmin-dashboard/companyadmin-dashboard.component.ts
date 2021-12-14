@@ -20,7 +20,7 @@ export class CompanyadminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getTemplates();
 
-    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    if (this.currentUser == undefined || this.currentUser.roleid != 1)
     {
       this.router.navigate(['/no-access']);
     }
@@ -28,7 +28,7 @@ export class CompanyadminDashboardComponent implements OnInit {
 
   getTemplates(companyId:string = "1") {
     //TODO: Set GetTemplates to GetPendingTemplates
-    this.restservice.GetTemplates(companyId)
+    this.restservice.GetPendingTemplates(companyId)
     .subscribe(data => {
       console.log(data);
       this.templates = data;
