@@ -8,7 +8,7 @@ import { RestService } from '../database/services/rest.service';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
 
@@ -95,7 +95,7 @@ export class AccountComponent implements OnInit {
 
   makeUser()
   {
-    this.user.companyid = this.id.id || 0;
+    this.user.companyid = this.currentUser.companyid;
     this.user.password =  this.generatePassword(8);
     this.user.roleid = 2;
     this.addUser();

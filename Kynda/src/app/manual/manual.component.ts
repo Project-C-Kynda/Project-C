@@ -1,38 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { Company } from '../database/models/company';
-import { User } from '../database/models/user';
+import { DomSanitizer } from '@angular/platform-browser';
 import { RestService } from '../database/services/rest.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manual',
   templateUrl: './manual.component.html',
-  styleUrls: ['./manual.component.css']
+  styleUrls: ['./manual.component.scss']
 })
 export class ManualComponent implements OnInit {
 
   company: any = [];
-  user: any = [];
-  currentUser = new User();
+  currentUser: any;
 
-  constructor(private restservice: RestService, private router: Router, private cookieService: CookieService) 
-  {
-    this.user = JSON.parse(this.cookieService.get('user') || '{}');
-    this.currentUser = this.user[0];
-  }
+  constructor(private restservice: RestService, private cookieservice: CookieService, private sanitizer: DomSanitizer, private router: Router) { }
 
-  ngOnInit(): void 
-  {
+  ngOnInit(): void {
+    this.currentUser = JSON.parse(this.cookieservice.get('user') || '{}')[0];
+    this.restservice.GetCompanyById(this.currentUser[0].companyid).subscribe(data => {
+      this.company = data;
+    });
+
     if (this.currentUser == undefined || this.currentUser.roleid != 2)
     {
       this.router.navigate(['/no-access']);
     }
-    
-    this.restservice.GetCompanyById(this.user.companyid).subscribe(data => {
-      console.log(data);
-      this.company = data;
-    })
+  }
+
+  manualURL() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl("/assets/manuals/" + this.company[0].manual);
   }
 
 }

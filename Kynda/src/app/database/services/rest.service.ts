@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest, HttpParams } f
 import { catchError, map } from 'rxjs/operators';
 import { Observable , throwError } from 'rxjs';
 import { Login } from '../models/login';
+import { Template } from '../models/template';
 
 
 @Injectable({
@@ -57,6 +58,10 @@ export class RestService {
     }));
   }
 
+  getCompany(companyName:string) {
+    return this.httpClient.get(`${this.REST_API}/companyid/${companyName}`);
+  }
+
   AddImage(image:Image): Observable<any> {
     const headers = {'content-type': 'application/json'};
     const body = JSON.stringify(image);
@@ -84,13 +89,20 @@ export class RestService {
     return this.httpClient.request(req);
   }
 
-  UploadImage(file: File): Observable<any> {
+  UploadTemplate(file: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', file);
-    const req = new HttpRequest('POST', `${this.REST_API}/upload-image`, formData, {
+    const req = new HttpRequest('POST', `${this.REST_API}/upload-template`, formData, {
       responseType: 'json'
     });
     return this.httpClient.request(req);
+  }
+
+  UploadTemplateData(template: Template): Observable<any> {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(template);
+    console.log(body);
+    return this.httpClient.post(`${this.REST_API}/template-data`, body, {'headers':headers})
   }
 
   GetFileList() {

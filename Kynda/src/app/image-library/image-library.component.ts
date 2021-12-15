@@ -8,19 +8,17 @@ import { RestService } from '../database/services/rest.service';
 @Component({
   selector: 'app-image-library',
   templateUrl: './image-library.component.html',
-  styleUrls: ['./image-library.component.css']
+  styleUrls: ['./image-library.component.scss']
 })
 export class ImageLibraryComponent implements OnInit {
 
   images!: Image[];
   image = new Image();
 
-  user: any = [];
   currentUser = new User();
 
   constructor(private restservice:RestService, private router: Router, private cookieService: CookieService) { 
-    this.user = JSON.parse(this.cookieService.get('user') || '{}');
-    this.currentUser = this.user[0];
+    this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
   }
 
   ngOnInit(): void {

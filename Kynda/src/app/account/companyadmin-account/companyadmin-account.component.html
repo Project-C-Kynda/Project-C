@@ -1,0 +1,34 @@
+<div class="background">
+    <div class="card">
+        <h2 class="card-title text-center">Adminaccount aanmaken voor</h2>
+        <form class="needs-validation" [formGroup]="userForm" novalidate>
+            <div class="form-group">
+                <label for="usernameValidation">Gebruikersnaam</label>
+                <input [(ngModel)]="user.accountname" type="text" class="form-control" id="usernameValidation" formControlName="username" 
+                    [ngClass]="{'is-invalid':username.errors && (username.touched || username.dirty), 'is-valid':username.valid}"/>
+                <div class="invalid-feedback">
+                    Ongeldige gebruikersnaam
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="emailValidation">Email</label>
+                <input type="email" class="form-control" id="emailValidation" [(ngModel)]="user.emailaddress" formControlName="emailAddress" 
+                    [ngClass]="{'is-invalid':emailAddress.errors && (emailAddress.touched || emailAddress.dirty), 'is-valid':emailAddress.valid}"/>
+                <div class="invalid-feedback">
+                    <p *ngIf="emailAddress.errors?.required">Dit veld is verplicht</p>
+                    <p *ngIf="emailAddress.errors?.pattern">Vul een geldig email adres in</p>
+                </div>
+            </div>
+            <div class="text-center form-group">
+                <br>
+                <button type="submit" class="btn btn-dark" [disabled]="userForm.invalid" (click)="makeUser()">Account aanmaken</button>
+            </div>
+            <div class="form-group">
+                <div class="alert alert-success" *ngIf="isShown" role="alert">
+                    <h4 class="alert-heading">Account is aangemaakt!</h4>
+                    <p class="mb-0">Er is een mail verzonden met de gebruikersnaam en wachtwoord naar {{user.emailaddress}}</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -8,34 +8,29 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-client-dashboard',
   templateUrl: './client-dashboard.component.html',
-  styleUrls: ['./client-dashboard.component.css']
+  styleUrls: ['./client-dashboard.component.scss']
 })
 export class ClientDashboardComponent implements OnInit {
 
   template = new Template();
   templates: any = [];
   user: any = [];
-  currentUser = new User();
+  currentUser: any;
 
-  constructor(private restservice : RestService, private router: Router, private cookieService : CookieService) 
-  {
-    this.user = JSON.parse(this.cookieService.get('user') || '{}');
-    this.currentUser = this.user[0];
+  constructor(private restservice : RestService, private router: Router, private cookieService: CookieService) {
+    this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
   }
 
-  ngOnInit(): void 
-  {
+  ngOnInit(): void {
+    this.getTemplates();
+
     if (this.currentUser == undefined || this.currentUser.roleid != 2)
     {
       this.router.navigate(['/no-access']);
     }
-
-    this.getTemplates("1");
-    
   }
 
-  getTemplates(companyId:string) {
-    //JSON.parse(localStorage.getItem('user') || '{}').companyid
+  getTemplates(companyId:string = "0") {
     console.log('running');
     this.restservice.GetTemplates(companyId)
     .subscribe(data => {
