@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../database/services/rest.service';
 import { Template } from '../database/models/template';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -13,15 +14,22 @@ export class ClientDashboardComponent implements OnInit {
   template = new Template();
   templates: any = [];
 
-  constructor(private restservice : RestService, private router: Router) {
+  currentUser: any;
+
+  constructor(private restservice : RestService, private router: Router, private cookieService: CookieService) {
+    this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
   }
 
   ngOnInit(): void {
     this.getTemplates();
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
 
   getTemplates(companyId:string = "0") {
-    //JSON.parse(localStorage.getItem('user') || '{}').companyid
     console.log('running');
     this.restservice.GetTemplates(companyId)
     .subscribe(data => {

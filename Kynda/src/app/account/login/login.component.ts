@@ -50,11 +50,15 @@ export class LoginComponent implements OnInit {
           console.log(this.cookieService.get('user'));
           if (this.User[0].roleid == 2)
           {
-            this.router.navigate(['/admin-dashboard']);
+            this.router.navigate(['/companyadmin-dashboard']);
           }
-          else
+          else if (this.User[0].roleid == 1)
           {
             this.router.navigate(['/client-dashboard']);
+          }
+          else if(this.User[0].roleid == 0)
+          {
+            this.router.navigate(['/admin-dashboard']);
           }
         }
         return this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
