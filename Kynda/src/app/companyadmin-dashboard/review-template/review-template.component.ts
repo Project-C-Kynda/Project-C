@@ -25,7 +25,7 @@ export class ReviewTemplateComponent implements OnInit {
 
     this.currentUser = JSON.parse(this.cookieService.get('user' || '{}'))[0];
 
-    if (this.currentUser == undefined || this.currentUser.roleid != 2){
+    if (this.currentUser == undefined || this.currentUser.roleid != 1){
       this.router.navigate(['/no-access']);
     }
   }
