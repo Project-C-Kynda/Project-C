@@ -1,22 +1,43 @@
 <app-navbar></app-navbar>
-<div class="text-center">
-	<input class="form-control" type="file" accept=".html"
-			(change)="onChange($event)">
 
-	<button (click)="onUpload()"
-		class="btn btn-success">
-		Upload
-	</button>
+<div class="background">
+	<div class="card">
+		<h2 class="card-title text-center">Nieuw template uploaden</h2>
+		<form class="needs-validation" [formGroup]="addTemplate" novalidate>
+		<div class="form-group">
+			<label for="templatenameValidation">Template naam</label>
+			<input type="text" class="form-control" id="templatenameValidation" [(ngModel)]="naam" formControlName="templateName" 
+                    [ngClass]="{'is-invalid': templateName.errors && (templateName.dirty || templateName.touched), 'is-valid':templateName.valid}">
+			<div class="invalid-feedback">
+				<p *ngIf="templateName.errors?.required">Dit veld is verplicht</p>
+			</div>
+		</div>
+			
+			<label for="companyName">Company</label><br>
+			<select class="custom-select" aria-label="Default select example" formControlName="companyName">
+				<option value="1">One</option>
+				<option value="2">Two</option>
+				<option value="3">Three</option>
+			</select>
+			<div class="invalid-feedback">
+				<p>Dit veld is verplicht</p>
+			</div>
+	</form><br>
+
+		<label for="companynameValidation">Kies de template file(s)</label>
+		<input class="form-control" type="file" accept=".html" (change)="onChange($event)">
+
+		<br><button (click)="onUpload()" class="btn btn-success">
+			Voeg template toe
+		</button>
+	</div>
 </div>
 
 <!-- Shareable short link of uploaded file -->
-<div class="container text-center jumbotron"
-	*ngIf="completeLoad">
+<div class="container text-center jumbotron" *ngIf="completeLoad">
 	<h2>Upload done</h2>
 </div>
 
 <!--Flag variable is used here-->
 <div class="container" *ngIf="loading">
 	<h3>Loading ...</h3>
-</div>
-
