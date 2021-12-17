@@ -26,7 +26,7 @@ export class TemplateComponent implements OnInit {
   user: any = [];
   currentUser = new User();
 
-  constructor(private http : HttpClient, private router:Router, private cookieService: CookieService) { 
+  constructor(private http : HttpClient, private router:Router, private cookieService: CookieService) {
     this.user = JSON.parse(this.cookieService.get('user') || '{}');
     this.currentUser = this.user[0];
   }
@@ -35,7 +35,7 @@ export class TemplateComponent implements OnInit {
 
   ngOnInit(): void
   {
-    const name = localStorage.getItem('templateName')?.replace(/['"]+/g, '');
+    const name = this.cookieService.get('templateName')?.replace(/['"]+/g, '');
     this.inputFileNaam = name;
     localStorage.removeItem('templateName');
     this.getHtmlFile();
@@ -52,7 +52,7 @@ export class TemplateComponent implements OnInit {
   getHtmlFile()
   {
       this.http
-          .get("../../assets/templates/" + this.inputFileNaam,
+          .get("../../assets/templates/" + this.inputFileNaam + ".html",
                { responseType: 'text' })
           .subscribe((data : any) => {
               this.httpString = data;
