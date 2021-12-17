@@ -1,4 +1,4 @@
-<div *ngIf="currentUser.roleid === 1">
+<div *ngIf="currentUser.roleid === 2">
     <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: #ffebff;">
         <a class="navbar-brand" href="/client-dashboard">
             <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top"
@@ -9,8 +9,6 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" [routerLink]="'/image-library'" [routerLinkActive]="['active']">Beeldbank</a>
             <a class="nav-item nav-link" [routerLink]="'/manual'" [routerLinkActive]="['active']">Handleiding</a>
-            <a class="nav-item nav-link" [routerLink]="['/template']" [routerLinkActive]="['active']">Template
-                Editor</a>
         </div>
 
         <div class="nav navbar-nav ml-auto justify-content-end">
@@ -27,16 +25,15 @@
     </nav>
 </div>
 
-<div *ngIf="currentUser.roleid === 2">
+<div *ngIf="currentUser.roleid === 1">
     <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: #ffebff;">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/companyadmin-dashboard">
             <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top"
                 style='border-radius: 15%;' alt="">
             Bedrijfsdashboard
         </a>
 
         <div class="navbar-nav">
-            <a class="nav-item nav-link" [routerLink]="['null']" [routerLinkActive]="['active']">Uitingen controleren</a>
             <a class="nav-item nav-link" [routerLink]="'/account'" [routerLinkActive]="['active']">Gebruikersaccount toevoegen</a>
         </div>
 
@@ -54,7 +51,7 @@
     </nav>
 </div>
 
-<div *ngIf="currentUser.roleid === 3">
+<div *ngIf="currentUser.roleid === 0">
     <nav class="navbar navbar-expand navbar-light shadow-sm p-3 mb-1" style="background-color: #ffebff;">
         <a class="navbar-brand" href="/admin-dashboard">
             <img src="../../assets/images/KyndaLogo.png" width="30" height="30" class="d-inline-block align-top"

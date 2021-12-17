@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Template } from '../database/models/template';
@@ -21,6 +22,12 @@ export class TemplateUploadComponent implements OnInit {
 	
 	user: any = [];
 	currentUser = new User();
+
+	addTemplate!: FormGroup;
+	templateName!: FormControl;
+	companyName!: FormControl;
+	naam!: string;
+
 	// Inject service
 	constructor(private restservice: RestService, private router: Router, private cookieService: CookieService) {
 		this.user = JSON.parse(this.cookieService.get('user') || '{}');
@@ -28,10 +35,19 @@ export class TemplateUploadComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		if (this.currentUser == undefined || this.currentUser.roleid != 2)
+		if (this.currentUser == undefined || this.currentUser.roleid != 0)
 		{
 		this.router.navigate(['/no-access']);
 		}
+
+		this.templateName = new FormControl('', Validators.required);
+		this.companyName = new FormControl();
+		this.addTemplate = new FormGroup(
+			{
+			  'templateName': this.templateName,
+			  'companyName' : this.companyName,
+			}
+		)
 	}
 
 	// On file Select
