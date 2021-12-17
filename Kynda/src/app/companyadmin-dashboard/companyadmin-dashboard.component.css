@@ -2,3 +2,11 @@
     padding-top: 15vh;
     height: 100vh;
 }
+
+.background{
+    background-image: 
+        linear-gradient(rgba(255, 0, 187), transparent), 
+        linear-gradient(93deg, transparent, rgba(19, 43, 200, 0.89 )), 
+        linear-gradient(60deg, rgb(210, 46, 18), transparent);
+    height: 100%;
+}

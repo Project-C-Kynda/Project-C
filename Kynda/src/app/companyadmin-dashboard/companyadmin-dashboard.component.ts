@@ -20,7 +20,7 @@ export class CompanyadminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getTemplates();
 
-    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    if (this.currentUser == undefined || this.currentUser.roleid != 1)
     {
       this.router.navigate(['/no-access']);
     }

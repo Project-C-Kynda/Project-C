@@ -45,7 +45,7 @@ export class AccountComponent implements OnInit {
 
     this.getCompanies();
 
-    if (this.currentUser == undefined || this.currentUser.roleid != 0)
+    if (this.currentUser == undefined || this.currentUser.roleid != 1)
     {
       this.router.navigate(['/no-access']);
     }

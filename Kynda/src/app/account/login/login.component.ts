@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
 
           if(this.User[0].roleid == 1)
           {
-
+            this.router.navigate(['/companyadmin-dashboard']);
           }
 
           if(this.User[0].roleid == 0)
