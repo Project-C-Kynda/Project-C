@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="container-fluid">
     <div class="row">
         <form class="template-form shadow col-4">
@@ -10,7 +11,8 @@
                     <div class="form-group">
                         <input type="text" class="form-control" id="template-title" name="template-title{{i}}" placeholder="Nieuwe template" [(ngModel)]='headings[i].innerText'>
                     </div>
-            </div>
+                </div>
+            
             
                 <label for="template-text" class="form-label">Template text:</label>
                 <div *ngFor="let paragraph of paragraphs; let x = index">
@@ -27,6 +29,7 @@
                 </div>
                 
                 <button class="btn btn-info" type="button" onclick="updateTemplate()">Template opslaan</button><br><br>
+
             </div>
 
             <div id="selector-parts">
@@ -34,11 +37,10 @@
                 <input type="text" class="form-control" id="file_naam" name="filenaam" placeholder="Typ de file naam van de template. Bijv: templateB.html" [(ngModel)]='inputFileNaam'><br>
                 <button class="btn btn-info" id='load_button' (click)="getHtmlFile()">Laad template</button>
             </div>
-            
 
         </form>
         
-        <div class="content col-8">
+        <div *ngIf="httpString != null" class="content col-8">
             <div [innerHtml]="loadedHtmlFile.innerHTML"></div>
         </div>
     </div>

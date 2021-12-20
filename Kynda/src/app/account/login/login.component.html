@@ -1,0 +1,27 @@
+<div class="background">
+    <img class="logo-kynda" src="../../../assets/Logo's/kyndalogo.svg">
+    <div class="card">
+        <h2 class="card-title text-center">Login</h2>
+        <form class="needs-validation" [formGroup]="login" novalidate>
+            <div class="form-group">
+                <label for="usernameValidation">Gebruikersnaam</label>
+                <input type="text" class="form-control" id="usernameValidation" #usernameValidation formControlName="userName"
+                    [ngClass]="{'is-invalid': userName.errors && userName.touched}">
+                <div class="invalid-feedback">
+                    Dit veld is verplicht
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordValidation">Wachtwoord</label>
+                <input type="password" class="form-control" id="passwordValidation" #passwordValidation formControlName="password"
+                    [ngClass]="{'is-invalid': password.errors && userName.touched}">
+                <div class="invalid-feedback">
+                    Dit veld is verplicht
+                </div>
+                <a class="forgot-password" [routerLink]="['/forgot-password']" routerLinkActive="router-link-active">Wachtwoord vergeten?</a>
+            </div>
+            <p>{{validationMessage}}</p>
+            <button type="submit" class="btn btn-dark login" (click)="Login(usernameValidation.value,passwordValidation.value)">Inloggen</button>
+        </form>
+    </div>
+</div>
