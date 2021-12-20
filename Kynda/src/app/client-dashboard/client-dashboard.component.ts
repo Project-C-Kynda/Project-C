@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../database/services/rest.service';
 import { Template } from '../database/models/template';
 import { Router } from '@angular/router';
+import { User } from '../database/models/user';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -13,7 +14,7 @@ export class ClientDashboardComponent implements OnInit {
 
   template = new Template();
   templates: any = [];
-
+  user: any = [];
   currentUser: any;
 
   constructor(private restservice : RestService, private router: Router, private cookieService: CookieService) {

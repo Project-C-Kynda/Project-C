@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { Company } from 'src/app/database/models/company';
 import { User } from 'src/app/database/models/user';
@@ -27,12 +28,10 @@ export class CompanyAccountComponent implements OnInit {
   companyName!: FormControl;
   styleguide!: FormControl;
 
-  user: any = [];
   currentUser = new User();
 
-  constructor(private restservice: RestService, private router: Router) {
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.currentUser = this.user[0];
+  constructor(private restservice: RestService, private router: Router, private cookieService: CookieService) {
+    this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
    }
 
   ngOnInit() {
@@ -101,6 +100,8 @@ export class CompanyAccountComponent implements OnInit {
     this.restservice.AddCompany(this.company)
     .subscribe(data => {
      console.log(data);
-    })
+    });
+    this.cookieService.set('Company', JSON.stringify(this.company.name));
+    this.router.navigate(['/companyadmin-account']);
   }
 }

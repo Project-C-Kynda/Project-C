@@ -2,67 +2,52 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { User } from '../database/models/user';
-import { RestService } from '../database/services/rest.service';
+import { Company } from 'src/app/database/models/company';
+import { User } from '../../database/models/user';
+import { RestService } from '../../database/services/rest.service';
 
 @Component({
   selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  templateUrl: './companyadmin-account.component.html',
+  styleUrls: ['./companyadmin-account.component.css']
 })
-export class AccountComponent implements OnInit {
+export class CompanyadminAccountComponent implements OnInit {
 
   isShown: boolean = false;
   selectedOption!: string;
   id: any = 0;
-  companies: any = [];
 
-  users!: User[];
   user = new User();
+  currentUser: any;
 
   userForm!: FormGroup;
   username!: FormControl;
   emailAddress!: FormControl;
-  company!: FormControl;
+  company!: any;
 
-  userlist: any = [];
-  currentUser = new User();
 
-  constructor(private restservice: RestService, private formBuilder: FormBuilder, private router: Router, private cookieService: CookieService) {
-    this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
+  constructor(private restservice: RestService, private formBuilder: FormBuilder, private cookieService: CookieService, private router: Router) {
+    this.currentUser = JSON.parse(cookieService.get('user' || '{}'))[0];
    }
 
   ngOnInit() {
     this.username = new FormControl(null,Validators.required);
     this.emailAddress = new FormControl(null,[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
-    this.company = new FormControl();
 
     this.userForm =  this.formBuilder.group({
       'username': this.username,
-      'emailAddress': this.emailAddress,
-      'company': this.company
+      'emailAddress': this.emailAddress
     });
 
-    this.getCompanies();
+    this.company = this.restservice.getCompany(
+      JSON.parse(this.cookieService.get('Company' || '{}'))[0]
+      );
+    this.cookieService.delete('Company');
 
-    if (this.currentUser == undefined || this.currentUser.roleid != 1)
+    if (this.currentUser == undefined || this.currentUser.roleid != 0)
     {
       this.router.navigate(['/no-access']);
     }
-  }
-
-  changeValue(e: any): void {
-    this.id = this.companies.find(function (c: { name: any; }) {
-        return c.name == e.target.value;
-      });
-  }
-
-  getCompanies(){
-    this.restservice.GetCompanies()
-      .subscribe(data => {
-        this.companies = data;
-      }
-      )
   }
 
   generatePassword(length: number){
@@ -94,7 +79,7 @@ export class AccountComponent implements OnInit {
 
   makeUser()
   {
-    this.user.companyid = this.currentUser.companyid;
+    this.user.companyid = this.company.id;
     this.user.password =  this.generatePassword(8);
     this.user.roleid = 2;
     this.addUser();
@@ -107,8 +92,8 @@ export class AccountComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
     })
-  }
-
+  }  
+  
 //===================EMAIL===================
   sendMail()
   {
