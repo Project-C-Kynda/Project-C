@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="page-preview">
+        <div *ngIf="httpString != null" class="content col-8">
+            <div [innerHtml]="loadedHtmlFile.innerHTML"></div>
+        </div>
+    </div>
+
+    <div class="control-buttons">
+        <button class="btn btn-success" (click)="reviewTemplate('approved')">Goedgekeurd</button>
+        <button class="btn btn-danger" (click)="reviewTemplate('disapproved')">Afgekeurd</button>
+    </div>
+</div>

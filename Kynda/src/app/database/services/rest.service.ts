@@ -58,6 +58,10 @@ export class RestService {
     }));
   }
 
+  getCompany(companyName:string) {
+    return this.httpClient.get(`${this.REST_API}/companyid/${companyName}`);
+  }
+
   AddImage(image:Image): Observable<any> {
     const headers = {'content-type': 'application/json'};
     const body = JSON.stringify(image);
