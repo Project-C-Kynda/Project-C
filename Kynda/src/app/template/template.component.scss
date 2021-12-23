@@ -3,9 +3,30 @@
 }
 
 .content{
-    padding-left: 5vw;
+    padding-left: 1vw;
 }
 
 h4{
     border-bottom: 1px grey solid;
+}
+
+
+.frame
+{
+    width: 168%;
+    position: fixed;
+    height: 250vh;
+    border: 50;
+    overflow: hidden;
+    -ms-transform: scale(0.25);
+    -moz-transform: scale(0.25);
+    -o-transform: scale(0.25);
+    -webkit-transform: scale(0.25);
+    transform: scale(0.36);
+
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
 }
