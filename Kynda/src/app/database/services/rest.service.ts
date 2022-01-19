@@ -9,6 +9,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Observable , throwError } from 'rxjs';
 import { Login } from '../models/login';
 import { Template } from '../models/template';
+import { TemplateStatus } from '../models/templateStatus';
 
 
 @Injectable({
@@ -175,6 +176,13 @@ export class RestService {
     const body = JSON.stringify(template);
     console.log(body);
     return this.httpClient.post(`${this.REST_API}/template-data`, body, {'headers':headers})
+  }
+
+  UpdateTemplateStatus(templateStatus: TemplateStatus): Observable<any> {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(templateStatus);
+    console.log(body);
+    return this.httpClient.post(`${this.REST_API}/update`, body, {'headers': headers})
   }
 
   GetFileList() {
