@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TemplateComponent } from './template/template.component';
 import { DatabaseComponent } from './database/database.component';
@@ -8,6 +8,7 @@ import { LoginComponent } from './account/login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
+import { TemplateLibraryComponent } from './template-library/template-library.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CompanyadminAccountComponent } from './account/companyadmin-account/companyadmin-account.component';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: "account", component: AccountComponent},
   {path: "company-account", component: CompanyAccountComponent},
   {path: "template-upload", component: TemplateUploadComponent},
+  {path: "template-library", component: TemplateLibraryComponent},
   {path: "admin-dashboard", component: AdminDashboardComponent},
   {path: "companyadmin-account", component: CompanyadminAccountComponent},
   {path: "client-dashboard", component: ClientDashboardComponent},
