@@ -1,0 +1,14 @@
+@startuml
+start
+:Kynda medewerker registreert account;
+if (Account bestaat?) then (no)
+    #palegreen:Kynda medewerker voert een emailadres en wachtwoord in;
+    :Gebruiker wordt toegevoegd aan de database;
+else (yes)
+    #Pink:Kynda medewerker krijgt een waarschuwing
+    dat een account met het opgegeven 
+    emailadres al bestaat;
+    kill
+endif
+stop
+@enduml

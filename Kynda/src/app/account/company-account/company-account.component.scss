@@ -1,0 +1,25 @@
+.card{
+    width: 40vw;
+    height: 60vh;
+    margin-left: 30vw;
+    margin-top: 15vh;
+    padding: 2vw;
+}
+
+.navbar{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.navbar-text{
+    margin-right: 1vw;
+}
+
+.background{
+    width: 100vw;
+    height: 100vh;
+    background-image: 
+        linear-gradient(rgb(255, 0, 186), transparent), 
+        linear-gradient(93deg, transparent, rgba(19, 43, 200, 0.89)), 
+        linear-gradient(60deg, rgb(210, 46, 18), transparent);
+}
