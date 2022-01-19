@@ -55,21 +55,36 @@ export class TemplateComponent implements OnInit {
       this.loadedHtmlFile = this.sanitizer.bypassSecurityTrustResourceUrl("assets/templates/" + this.inputFileNaam);
 
   }
-
+  
   generateEditor()
   {
-    var x : any = document.getElementById("frame");
+     var x : any = document.getElementById("frame");
       var loadedDocument = (x.contentWindow || x.contentDocument);
-      console.log(loadedDocument);
+      this.paragraphs = loadedDocument.document.querySelectorAll('span');
+      
+      x.style.height = loadedDocument.document.body.scrollHeight + 'vh';
+      var scaleVar = (loadedDocument.document.body.scrollHeight/2750);
+      console.log(loadedDocument.document.body.scrollWidth);
+
+      if(loadedDocument.document.body.scrollWidth < 2750)
+      {
+        console.log('ja');
+        x.style.width = loadedDocument.document.body.scrollWidth-0 + 'px';
+      }
+
+      if(scaleVar < 1)
+        x.style.transform = "scale(" + (((1-scaleVar))+0.02) + ")";
       //Gets all the <h*> and <p> elements from the HTML template and puts it into an array
       //It will ignore all elements that have class='editor' in them
       this.headings = loadedDocument.document.querySelectorAll('h1:not(.editor),h2:not(.editor),h3:not(.editor),h4:not(.editor),h5:not(.editor),h6:not(.editor)');
-      this.paragraphs = loadedDocument.document.querySelectorAll('span');
+
+
       this.selectorParts = document.getElementById("selector-parts")
       this.selectorParts.remove();
       this.editorParts.style.display = 'initial';
 
       console.log(this.paragraphs[0].childNodes[0]);
   }
+
 }
 
