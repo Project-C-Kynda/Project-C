@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 <div class="background">
+    <!--if there are no templates, show this-->
     <div class="no-template-container">
         <div *ngIf="templates.length === 0">
             <div>
@@ -8,6 +9,7 @@
         </div>
     </div>
 
+    <!--als er een template is geselecteerd, laat deze zien-->
     <div class="template-container">
         <div *ngIf="selectedTemplate">
             <h4>{{selectedTemplate.name}}</h4>
@@ -17,6 +19,7 @@
         </div>
     </div>
 
+    <!--dit stuk laat alle templates zien die in reviewTemplates staan-->
     <div class="review-container">
         <h3 class="template-header-text">Hier de templates open voor review</h3>
         <div class="d-flex p-2">

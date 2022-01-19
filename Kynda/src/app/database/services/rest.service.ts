@@ -178,6 +178,11 @@ export class RestService {
     return this.httpClient.post(`${this.REST_API}/template-data`, body, {'headers':headers})
   }
 
+  /**
+   * 
+   * @param templateStatus de status van het template
+   * @returns een post request voor het updaten van de status
+   */
   UpdateTemplateStatus(templateStatus: TemplateStatus): Observable<any> {
     const headers = {'content-type': 'application/json'};
     const body = JSON.stringify(templateStatus);
@@ -185,17 +190,31 @@ export class RestService {
     return this.httpClient.post(`${this.REST_API}/update`, body, {'headers': headers})
   }
 
+  /**
+   * 
+   * @returns alle files
+   */
   GetFileList() {
     return this.httpClient.get(`${this.REST_API}/file-list`)
   }
 
+  /**
+   * 
+   * @param filename afbeelding die verwijderd moet worden
+   * @returns niks
+   */
   DeleteImage(filename:String) {
     return this.httpClient.get(`${this.REST_API}/delete-image/${filename}`)
   }
 
+  /**
+   * 
+   * @returns niks
+   */
   SendMail(): Observable<any> {
     return this.httpClient.get(`${this.REST_API}/sendmail`)
   }
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';

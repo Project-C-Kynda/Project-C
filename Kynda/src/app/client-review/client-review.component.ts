@@ -30,6 +30,7 @@ export class ClientReviewComponent implements OnInit {
     this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
   }
 
+  //split de templates 
   ngOnInit(): void {
     this.splitTemplates();
 
