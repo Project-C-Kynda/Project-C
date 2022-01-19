@@ -38,11 +38,15 @@ export class CompanyadminAccountComponent implements OnInit {
       'username': this.username,
       'emailAddress': this.emailAddress
     });
-
-    this.company = this.restservice.getCompany(
-      JSON.parse(this.cookieService.get('Company' || '{}'))[0]
-      );
-    this.cookieService.delete('Company');
+    console.log(JSON.parse(this.cookieService.get('Company' || '{}')))
+    setTimeout(() => {
+      this.restservice.getCompany(
+        JSON.parse(this.cookieService.get('Company' || '{}'))
+        ).subscribe(data => {
+          console.log(data)
+          this.company = data});
+          this.cookieService.delete('Company');
+    }, 500);
 
     if (this.currentUser == undefined || this.currentUser.roleid != 0)
     {
@@ -79,7 +83,7 @@ export class CompanyadminAccountComponent implements OnInit {
 
   makeUser()
   {
-    this.user.companyid = this.company.id;
+    this.user.companyid = JSON.parse(this.company);
     this.user.password =  this.generatePassword(8);
     this.user.roleid = 2;
     this.addUser();
@@ -92,8 +96,8 @@ export class CompanyadminAccountComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
     })
-  }  
-  
+  }
+
 //===================EMAIL===================
   sendMail()
   {
