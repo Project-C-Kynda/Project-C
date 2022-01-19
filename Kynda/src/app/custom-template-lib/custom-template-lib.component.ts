@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from '../database/services/rest.service';
-import { Template, TEMPLATES } from "./template-dir"
-import { HttpClient } from '@angular/common/http';
-import { TemplateComponent } from '../template/template.component';
+import { Template } from '../database/models/template';
 import { DownloadService } from '../template-download/download.service';
 import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { CookieService } from 'ngx-cookie-service';
+import { User } from '../database/models/user';
+import { RestService } from '../database/services/rest.service';
 
 
 @Component({
@@ -14,39 +14,45 @@ import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platf
 })
 export class CustomTemplateLibComponent implements OnInit {
 
-  templates = TEMPLATES;
+  allTemplates: any = [];
   downloadTemplates: Template[] = [];
-  reviewTemplates: Template[] = [];
   selectedTemplate?: Template;
   templateURL?: SafeResourceUrl;
+
+  user: any = [];
+  currentUser = new User();
 
   loadedHtmlFile : any;
   httpString : any;
   htmlString: any;
 
-  constructor(private restservice : RestService, private http : HttpClient, private download:DownloadService, private sanitizer:DomSanitizer) { 
+  constructor(private download:DownloadService, private sanitizer:DomSanitizer, private cookieService:CookieService, private restService:RestService) {
+  this.user = JSON.parse(this.cookieService.get('user') || '{}');
+  this.currentUser = this.user[0];
   }
 
   ngOnInit(): void {
     this.splitTemplates();
-    }
+  }
+
+
 
   splitTemplates(){
-    for (let i = 0; i < TEMPLATES.length; i++) {
-      if (TEMPLATES[i].rev) {
-        this.downloadTemplates?.push(TEMPLATES[i]);
+    this.restService.GetTemplates(this.currentUser.companyid.toString())
+    .subscribe(data => {
+      this.allTemplates = data
+    })
+    for (let i = 0; i < this.allTemplates.length; i++) {
+      //status can be: none, pending, approved, disapproved
+      if (this.allTemplates[i].status == "approved") {
+        this.downloadTemplates?.push(this.allTemplates[i]);
       }
-      else
-      {
-        this.reviewTemplates?.push(TEMPLATES[i]);
-      }
-      
     }
   }
   
   selectTemplate(template : Template){
     this.selectedTemplate = template;
-    this.templateURL = this.sanitizer.bypassSecurityTrustResourceUrl(template.ref);
+    this.templateURL = this.sanitizer.bypassSecurityTrustResourceUrl("/assets/templates/"+template.name+".html");
   }
 
   templateDownload(){

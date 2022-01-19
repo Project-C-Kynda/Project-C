@@ -14,6 +14,7 @@
             <h4>{{selectedTemplate.name}}</h4>
             <iframe [src]="templateURL" title="template-container" id="download" width="800px" height="600px"></iframe>
             <button type="button" class="btn btn-dark btn-block" id="template-download" (click)="templateDownload()">Download Template</button>
+            <h4>Status: {{selectedTemplate.status}}</h4>
         </div>
     </div>
 
