@@ -15,14 +15,14 @@ export class ClientDashboardComponent implements OnInit {
   template = new Template();
   templates: any = [];
   user: any = [];
-  currentUser: any;
+  currentUser = new User();
 
   constructor(private restservice : RestService, private router: Router, private cookieService: CookieService) {
     this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
   }
 
   ngOnInit(): void {
-    this.getTemplates();
+    this.getTemplates(this.currentUser.companyid.toString());
 
     if (this.currentUser == undefined || this.currentUser.roleid != 2)
     {
@@ -42,7 +42,7 @@ export class ClientDashboardComponent implements OnInit {
   //Save the templateName into localstorage?
   loadTempalte(templateName:string) {
     const jsonData = JSON.stringify(templateName);
-    localStorage.setItem('templateName', jsonData);
+    this.cookieService.set('templateName', jsonData);
     this.router.navigate(['/template']);
   }
 
