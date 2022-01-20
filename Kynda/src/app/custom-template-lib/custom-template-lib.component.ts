@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Template } from '../database/models/template';
 import { DownloadService } from '../template-download/download.service';
+import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../database/models/user';
@@ -34,8 +35,6 @@ export class CustomTemplateLibComponent implements OnInit {
   ngOnInit(): void {
     this.splitTemplates();
   }
-
-
 
   splitTemplates(){
     this.restService.GetTemplates(this.currentUser.companyid.toString())

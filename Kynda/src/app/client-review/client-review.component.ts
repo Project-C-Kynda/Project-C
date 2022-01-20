@@ -5,7 +5,6 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../database/models/user';
 
-
 @Component({
   selector: 'app-client-review',
   templateUrl: './client-review.component.html',
