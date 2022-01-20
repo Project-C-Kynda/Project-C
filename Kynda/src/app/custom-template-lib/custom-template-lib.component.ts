@@ -28,8 +28,6 @@ export class CustomTemplateLibComponent implements OnInit {
   httpString : any;
   htmlString: any;
 
-  currentUser: any;
-
   constructor(private restservice : RestService, private http : HttpClient, private download:DownloadService, private sanitizer:DomSanitizer, private cookieService: CookieService, private router: Router) { 
     this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
   }
