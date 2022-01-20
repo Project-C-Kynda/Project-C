@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Template } from '../database/models/template';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { User } from '../database/models/user';
+import { TemplateStatus } from '../database/models/templateStatus';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class ClientReviewComponent implements OnInit {
 
   user: any = [];
   currentUser = new User();
+  status = new TemplateStatus();
 
   constructor(private restservice : RestService, private sanitizer:DomSanitizer, private cookieService: CookieService, private router: Router) { 
     this.user = JSON.parse(this.cookieService.get('user') || '{}');
@@ -42,6 +44,7 @@ export class ClientReviewComponent implements OnInit {
     .subscribe(data => {
       this.allTemplates = data
     })
+    
     //status can be: none, pending, approved, disapproved
     for (let i = 0; i < this.allTemplates.length; i++) {
       if (this.allTemplates[i].status == "none" || this.allTemplates[i].status == "pending" || this.allTemplates[i].status == "disapproved") {
@@ -57,7 +60,10 @@ export class ClientReviewComponent implements OnInit {
 
   setPending(){
     if (this.selectedTemplate?.status != 'pending'){
-      //pending
+      this.status.companyid = this.currentUser.companyid;
+      this.status.name = this.selectTemplate.name;
+      this.status.stat = 'pending';
+      this.restservice.UpdateTemplateStatus(this.status);
     }
   }
 }
