@@ -9,8 +9,4 @@ describe('TemplateUploadService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(TemplateUploadService);
   });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });

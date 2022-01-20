@@ -16,6 +16,7 @@ import { AccountComponent } from './account/account.component';
 import { CookieService } from 'ngx-cookie-service';
 import { CompanyAccountComponent } from './account/company-account/company-account.component';
 import { TemplateUploadComponent } from './template-upload/template-upload.component';
+import { TemplateLibraryComponent } from './template-library/template-library.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CompanyadminAccountComponent } from './account/companyadmin-account/companyadmin-account.component';
 import { CompanyadminDashboardComponent } from './companyadmin-dashboard/companyadmin-dashboard.component';
@@ -39,6 +40,7 @@ import { ClientReviewComponent } from './client-review/client-review.component';
     AccountComponent,
     CompanyAccountComponent,
     TemplateUploadComponent,
+    TemplateLibraryComponent,
     AdminDashboardComponent,
     CompanyadminAccountComponent,
     CompanyadminDashboardComponent,
