@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Template } from '../database/models/template';
 import { DownloadService } from '../template-download/download.service';
+import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
+import { User } from '../database/models/user';
+import { RestService } from '../database/services/rest.service';
 import { Router } from '@angular/router';
 import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
+
 
 
 @Component({
@@ -27,7 +31,7 @@ export class CustomTemplateLibComponent implements OnInit {
   httpString : any;
   htmlString: any;
 
-  constructor(private restservice : RestService, private download:DownloadService, private sanitizer:DomSanitizer, private cookieService: CookieService, private router: Router) { 
+  constructor(private restService : RestService, private http : HttpClient, private download:DownloadService, private sanitizer:DomSanitizer, private cookieService: CookieService, private router: Router) { 
     this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
     this.currentUser = this.user[0];
   }
@@ -39,9 +43,8 @@ export class CustomTemplateLibComponent implements OnInit {
       this.router.navigate(['/no-access']);
     }
   }
-
   splitTemplates(){
-    this.restservice.GetTemplates(this.currentUser.companyid.toString())
+    this.restService.GetTemplates(this.currentUser.companyid.toString())
     .subscribe(data => {
       this.allTemplates = data
     })

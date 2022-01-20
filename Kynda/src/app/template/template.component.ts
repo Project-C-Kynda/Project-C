@@ -33,10 +33,10 @@ export class TemplateComponent implements OnInit {
   }
 
 
-
-  ngOnInit(): void {
-    const name = localStorage.getItem('templateName')?.replace(/['"]+/g, '');
-    //this.inputFileNaam = name;
+  ngOnInit(): void
+  {
+    const name = this.cookieService.get('templateName')?.replace(/['"]+/g, '');
+    this.inputFileNaam = name;
     localStorage.removeItem('templateName');
     //this.getHtmlFile();
     this.editorParts = document.getElementById('editor-parts');
@@ -52,8 +52,23 @@ export class TemplateComponent implements OnInit {
   //Gets the HTML file from the templates folder
   getHtmlFile() 
   {
-      this.loadedHtmlFile = this.sanitizer.bypassSecurityTrustResourceUrl("assets/templates/" + this.inputFileNaam);
+      this.http
+          .get("../../assets/templates/" + this.inputFileNaam + ".html",
+               { responseType: 'text' })
+          .subscribe((data : any) => {
+              this.httpString = data;
+              //this.htmlFromString(this.httpString)
+              this.selectorParts = document.getElementById("selector-parts")
+              this.selectorParts.remove();
 
+              //this.inputBoxFileNaam = document.getElementById('file_naam');
+              //this.button = document.getElementById('load_button')
+              //this.button.remove();
+              //this.inputBoxFileNaam.remove();
+              this.editorParts.style.display = 'initial';
+          }
+      );
+      this.loadedHtmlFile = this.sanitizer.bypassSecurityTrustResourceUrl("assets/templates/" + this.inputFileNaam);
   }
   
   generateEditor()
