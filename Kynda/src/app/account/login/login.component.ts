@@ -48,14 +48,22 @@ export class LoginComponent implements OnInit {
         if(this.User.length >= 1 && this.User[0].password == pass) {
           this.cookieService.set('user', JSON.stringify(this.User));
           console.log(this.cookieService.get('user'));
+          
           if (this.User[0].roleid == 2)
-          {
-            this.router.navigate(['/admin-dashboard']);
-          }
-          else
           {
             this.router.navigate(['/client-dashboard']);
           }
+
+          if(this.User[0].roleid == 1)
+          {
+            this.router.navigate(['/companyadmin-dashboard']);
+          }
+
+          if(this.User[0].roleid == 0)
+          {
+            this.router.navigate(['/admin-dashboard']);
+          }
+
         }
         return this.validationMessage = "De gebruikersnaam of wachtwoord klopt niet";
       })
