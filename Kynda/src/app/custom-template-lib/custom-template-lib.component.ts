@@ -7,8 +7,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
 import { Router } from '@angular/router';
-import { User } from '../database/models/user';
-import { RestService } from '../database/services/rest.service';
 
 
 
