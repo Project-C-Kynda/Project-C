@@ -57,7 +57,7 @@ export class TemplateComponent implements OnInit {
                { responseType: 'text' })
           .subscribe((data : any) => {
               this.httpString = data;
-              this.htmlFromString(this.httpString)
+              //this.htmlFromString(this.httpString)
               this.selectorParts = document.getElementById("selector-parts")
               this.selectorParts.remove();
 
