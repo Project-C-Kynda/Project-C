@@ -7,9 +7,6 @@ import { DownloadService } from '../template-download/download.service';
 import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { Template } from '../database/models/template';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { User } from '../database/models/user';
 import { TemplateStatus } from '../database/models/templateStatus';
 
 @Component({
