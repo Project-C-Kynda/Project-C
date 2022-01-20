@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../database/services/rest.service';
-import { Template, TEMPLATES } from "./template-dir"
-import { HttpClient } from '@angular/common/http';
-import { DownloadService } from '../template-download/download.service';
-import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { Template } from '../database/models/template';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { User } from '../database/models/user';
 
 
 @Component({
@@ -15,19 +14,17 @@ import { Router } from '@angular/router';
 })
 export class ClientReviewComponent implements OnInit {
 
-  currentUser: any;
-  templates = TEMPLATES;
-  downloadTemplates: Template[] = [];
+  allTemplates: any = [];
   reviewTemplates: Template[] = [];
   selectedTemplate?: Template;
   templateURL?: SafeResourceUrl;
 
-  loadedHtmlFile : any;
-  httpString : any;
-  htmlString: any;
+  user: any = [];
+  currentUser = new User();
 
-  constructor(private restservice : RestService, private http : HttpClient, private cookieService: CookieService, private download:DownloadService, private sanitizer:DomSanitizer, private router: Router) {
-    this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
+  constructor(private restservice : RestService, private sanitizer:DomSanitizer, private cookieService: CookieService, private router: Router) { 
+    this.user = JSON.parse(this.cookieService.get('user') || '{}');
+    this.currentUser = this.user[0];
   }
 
   //split de templates 
@@ -41,20 +38,26 @@ export class ClientReviewComponent implements OnInit {
   }
 
   splitTemplates(){
-    for (let i = 0; i < TEMPLATES.length; i++) {
-      if (TEMPLATES[i].rev) {
-        this.downloadTemplates?.push(TEMPLATES[i]);
+    this.restservice.GetTemplates(this.currentUser.companyid.toString())
+    .subscribe(data => {
+      this.allTemplates = data
+    })
+    //status can be: none, pending, approved, disapproved
+    for (let i = 0; i < this.allTemplates.length; i++) {
+      if (this.allTemplates[i].status == "none" || this.allTemplates[i].status == "pending" || this.allTemplates[i].status == "disapproved") {
+        this.reviewTemplates?.push(this.allTemplates[i]);
       }
-      else
-      {
-        this.reviewTemplates?.push(TEMPLATES[i]);
-      }
-      
     }
   }
   
   selectTemplate(template : Template){
     this.selectedTemplate = template;
-    this.templateURL = this.sanitizer.bypassSecurityTrustResourceUrl(template.ref);
+    this.templateURL = this.sanitizer.bypassSecurityTrustResourceUrl("/assets/templates/"+template.name+".html");
+  }
+
+  setPending(){
+    if (this.selectedTemplate?.status != 'pending'){
+      //pending
+    }
   }
 }

@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ManualComponent } from './manual.component';
 
@@ -8,7 +10,11 @@ describe('ManualComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManualComponent ]
+      declarations: [ ManualComponent ],
+      imports: [
+        HttpClientModule,
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   });
@@ -17,9 +23,5 @@ describe('ManualComponent', () => {
     fixture = TestBed.createComponent(ManualComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

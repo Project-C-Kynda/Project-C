@@ -12,10 +12,10 @@
     <!--als er een template is geselecteerd, laat deze zien-->
     <div class="template-container">
         <div *ngIf="selectedTemplate">
-            <h4>{{selectedTemplate.name}}</h4>
+            <h4>Naam: {{selectedTemplate.name}}</h4>
             <iframe [src]="templateURL" title="template-container" id="review" width="800px" height="600px"></iframe>
-            <button type="button" class="btn btn-dark btn-block" id="template-review">Review aanvragen</button>
-
+            <button type="button" class="btn btn-dark btn-block" id="template-review" (click)="setPending()">Review aanvragen</button>
+            <h4>Status: {{selectedTemplate.status}}</h4>
         </div>
     </div>
 
