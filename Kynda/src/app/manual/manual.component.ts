@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RestService } from '../database/services/rest.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manual',
@@ -11,15 +12,20 @@ import { RestService } from '../database/services/rest.service';
 export class ManualComponent implements OnInit {
 
   company: any = [];
-  user!: any;
+  currentUser: any;
 
-  constructor(private restservice: RestService, private cookieservice: CookieService, private sanitizer: DomSanitizer) { }
+  constructor(private restservice: RestService, private cookieservice: CookieService, private sanitizer: DomSanitizer, private router: Router) { }
 
   ngOnInit(): void {
-    this.user = JSON.parse(this.cookieservice.get('user'));
-    this.restservice.GetCompanyById(this.user[0].companyid).subscribe(data => {
+    this.currentUser = JSON.parse(this.cookieservice.get('user') || '{}')[0];
+    this.restservice.GetCompanyById(this.currentUser[0].companyid).subscribe(data => {
       this.company = data;
-    })
+    });
+
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
 
   manualURL() {

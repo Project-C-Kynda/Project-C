@@ -5,6 +5,8 @@ import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platf
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../database/models/user';
 import { RestService } from '../database/services/rest.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -26,17 +28,19 @@ export class CustomTemplateLibComponent implements OnInit {
   httpString : any;
   htmlString: any;
 
-  constructor(private download:DownloadService, private sanitizer:DomSanitizer, private cookieService:CookieService, private restService:RestService) {
-  this.user = JSON.parse(this.cookieService.get('user') || '{}');
-  this.currentUser = this.user[0];
+  currentUser: any;
+
+  constructor(private restservice : RestService, private http : HttpClient, private download:DownloadService, private sanitizer:DomSanitizer, private cookieService: CookieService, private router: Router) { 
+    this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
   }
 
   ngOnInit(): void {
     this.splitTemplates();
+    if (this.currentUser == undefined || this.currentUser.roleid != 2)
+    {
+      this.router.navigate(['/no-access']);
+    }
   }
-
-
-
   splitTemplates(){
     this.restService.GetTemplates(this.currentUser.companyid.toString())
     .subscribe(data => {

@@ -6,10 +6,9 @@
             
             <div id='editor-parts'>
                 <h4 class='editor'>Bewerk hierin uw template:</h4>
-                <label for="template-title" class="form-label">Template headings:</label>
                 <div *ngFor="let heading of headings; let i = index">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="template-title" name="template-title{{i}}" placeholder="Nieuwe template" [(ngModel)]='headings[i].innerText'>
+                        <input type="text" class="form-control" id="template-title" name="template-title{{i}}" placeholder="Nieuwe template" [(ngModel)]='headings[i].textContent'>
                     </div>
                 </div>
             
@@ -39,9 +38,8 @@
             </div>
 
         </form>
-        
-        <div *ngIf="httpString != null" class="content col-8">
-            <div [innerHtml]="loadedHtmlFile.innerHTML"></div>
+        <div *ngIf="loadedHtmlFile != null" class="content col-8">
+            <iframe (load)="generateEditor()" class="frame" id='frame' [src]="loadedHtmlFile" frameborder="50" scrolling="no"></iframe>
         </div>
     </div>
 </div>
