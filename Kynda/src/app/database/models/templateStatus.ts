@@ -1,5 +1,5 @@
 export class TemplateStatus {
-    companyid!: number;
-    name!: string;
-    stat!: string;
+    companyid!: Number;
+    name!: String;
+    stat!: String;
 }

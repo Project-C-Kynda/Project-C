@@ -31,6 +31,7 @@ export class CustomTemplateLibComponent implements OnInit {
 
   constructor(private restService : RestService, private http : HttpClient, private download:DownloadService, private sanitizer:DomSanitizer, private cookieService: CookieService, private router: Router) { 
     this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
+    this.currentUser = this.user[0];
   }
 
   ngOnInit(): void {

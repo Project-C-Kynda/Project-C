@@ -7,6 +7,7 @@ import { DownloadService } from '../template-download/download.service';
 import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { TemplateStatus } from '../database/models/templateStatus';
 
 @Component({
   selector: 'app-client-review',
@@ -14,7 +15,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./client-review.component.scss']
 })
 export class ClientReviewComponent implements OnInit {
-
 
   allTemplates: any = [];
   downloadTemplates: Template[] = [];
@@ -24,11 +24,14 @@ export class ClientReviewComponent implements OnInit {
 
   user: any = [];
   currentUser = new User();
+  status = new TemplateStatus();
 
-  constructor(private restservice : RestService, private http : HttpClient, private cookieService: CookieService, private download:DownloadService, private sanitizer:DomSanitizer, private router: Router) {
-    this.currentUser = JSON.parse(this.cookieService.get('user') || '{}')[0];
+  constructor(private restservice : RestService, private sanitizer:DomSanitizer, private cookieService: CookieService, private router: Router) { 
+    this.user = JSON.parse(this.cookieService.get('user') || '{}');
+    this.currentUser = this.user[0];
   }
 
+  //split de templates 
   ngOnInit(): void {
     this.splitTemplates();
     if (this.currentUser == undefined || this.currentUser.roleid != 2)
@@ -42,6 +45,7 @@ export class ClientReviewComponent implements OnInit {
     .subscribe(data => {
       this.allTemplates = data
     })
+
     //status can be: none, pending, approved, disapproved
     for (let i = 0; i < this.allTemplates.length; i++) {
       if (this.allTemplates[i].status == "none" || this.allTemplates[i].status == "pending" || this.allTemplates[i].status == "disapproved") {
@@ -57,7 +61,10 @@ export class ClientReviewComponent implements OnInit {
 
   setPending(){
     if (this.selectedTemplate?.status != 'pending'){
-      //pending
+      this.status.companyid = this.currentUser.companyid;
+      this.status.name = this.selectTemplate.name;
+      this.status.stat = 'pending';
+      this.restservice.UpdateTemplateStatus(this.status);
     }
   }
 }
