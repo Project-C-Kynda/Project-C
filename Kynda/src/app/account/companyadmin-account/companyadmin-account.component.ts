@@ -16,6 +16,7 @@ export class CompanyadminAccountComponent implements OnInit {
   isShown: boolean = false;
   selectedOption!: string;
   id: any = 0;
+  companyName!: string;
 
   user = new User();
   currentUser: any;
@@ -23,7 +24,7 @@ export class CompanyadminAccountComponent implements OnInit {
   userForm!: FormGroup;
   username!: FormControl;
   emailAddress!: FormControl;
-  company!: any;
+  public company: any = [];
 
 
   constructor(private restservice: RestService, private formBuilder: FormBuilder, private cookieService: CookieService, private router: Router) {
@@ -39,14 +40,6 @@ export class CompanyadminAccountComponent implements OnInit {
       'emailAddress': this.emailAddress
     });
     console.log(JSON.parse(this.cookieService.get('Company' || '{}')))
-    setTimeout(() => {
-      this.restservice.getCompany(
-        JSON.parse(this.cookieService.get('Company' || '{}'))
-        ).subscribe(data => {
-          console.log(data)
-          this.company = data});
-          this.cookieService.delete('Company');
-    }, 500);
 
     if (this.currentUser == undefined || this.currentUser.roleid != 0)
     {
@@ -83,11 +76,15 @@ export class CompanyadminAccountComponent implements OnInit {
 
   makeUser()
   {
-    this.user.companyid = JSON.parse(this.company);
-    this.user.password =  this.generatePassword(8);
-    this.user.roleid = 2;
-    this.addUser();
-    this.toggleShow();
+    this.restservice.getCompany(this.companyName)
+      .subscribe(data => {
+        this.company = data;
+        this.user.companyid = this.company[0].id;
+        this.user.password =  this.generatePassword(8);
+        this.user.roleid = 2;
+        this.addUser();
+        this.toggleShow();
+      });
   }
 
   addUser()

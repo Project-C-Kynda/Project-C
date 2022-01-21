@@ -30,6 +30,10 @@ export class ClientDashboardComponent implements OnInit {
     }
   }
 
+  /**
+   * This fetches all the templates from the company with the companyId.
+   * @param companyId a string that resembles the id of the chosen company
+   */
   getTemplates(companyId:string = "0") {
     console.log('running');
     this.restservice.GetTemplates(companyId)
@@ -39,7 +43,10 @@ export class ClientDashboardComponent implements OnInit {
     })
   }
 
-  //Save the templateName into localstorage?
+  /**
+   * This loads a template into the cookie so that it can be used in another script
+   * @param templateName the name of the chosen template
+   */
   loadTempalte(templateName:string) {
     const jsonData = JSON.stringify(templateName);
     this.cookieService.set('templateName', jsonData);

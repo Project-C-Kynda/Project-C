@@ -1,3 +1,6 @@
+/**
+ * @class This is a blueprint for the base Template
+ */
 export class Template {
     companyid!: number;
     name!: string;
