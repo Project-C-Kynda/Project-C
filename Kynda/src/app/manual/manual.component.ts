@@ -28,6 +28,9 @@ export class ManualComponent implements OnInit {
     }
   }
 
+  /**
+   * @returns returns a path to the manual. This has to be sanitized so that HTTP accepts it.
+   */
   manualURL() {
     return this.sanitizer.bypassSecurityTrustResourceUrl("/assets/manuals/" + this.company[0].manual);
   }

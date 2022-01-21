@@ -16,11 +16,13 @@ import { TemplateStatus } from '../models/templateStatus';
   providedIn: 'root'
 })
 /**
- * deze class heeft alle database services
+ * @class This class houses all the functions needed for the API calls.
  */
 export class RestService {
 
-  //de URL naar de api
+  /**
+   * @field This is a string that has the URL to the API
+   */
   REST_API: string = 'http://145.24.222.51:8011/api';
 
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -28,7 +30,7 @@ export class RestService {
   constructor(private httpClient: HttpClient) { }
 
   /**
-   * 
+   *
    * @param login de login creds van een gebruiker
    * @returns of de login een succes was of niet
    */
@@ -39,7 +41,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @returns alle companies
    */
   GetCompanies() {
@@ -47,7 +49,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param companyId het Id van het bedrijf
    * @returns alle bedrijven met het gegeven Id
    */
@@ -56,7 +58,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param companyId het Id van het bedrijf
    * @returns alle templates die bij het bedrijf horen
    */
@@ -65,7 +67,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param company alle gegevens van een bedrijf
    * @returns een post request
    */
@@ -77,7 +79,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param accName de naam van het account
    * @returns de gebruiker
    */
@@ -86,7 +88,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param accName de naam van het account
    * @returns de gebruiker en logged iets in de console
    */
@@ -98,7 +100,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param companyName de naam van een bedrijf
    * @returns het bedrijf
    */
@@ -107,7 +109,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param image een afbeelding
    * @returns een post request voor de afbeelding
    */
@@ -119,7 +121,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @returns alle afbeeldingen
    */
   GetImages(): Observable<any> {
@@ -127,7 +129,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param user alle gegevens voor een gebruiker
    * @returns een post request voor een gebuiker
    */
@@ -139,7 +141,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param file het bestand dat je wilt uploaden
    * @returns een post request voor het bestand
    */
@@ -153,7 +155,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param file het template dat je wilt uploaden
    * @returns een post request voor het template
    */
@@ -167,7 +169,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param template het template
    * @returns een post request voor het template
    */
@@ -179,7 +181,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param templateStatus de status van het template
    * @returns een post request voor het updaten van de status
    */
@@ -191,7 +193,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @returns alle files
    */
   GetFileList() {
@@ -199,7 +201,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @param filename afbeelding die verwijderd moet worden
    * @returns niks
    */
@@ -208,7 +210,7 @@ export class RestService {
   }
 
   /**
-   * 
+   *
    * @returns niks
    */
   SendMail(): Observable<any> {
