@@ -58,11 +58,12 @@ export class TemplateComponent implements OnInit {
   
   generateEditor()
   {
-     var x : any = document.getElementById("frame");
+     var x : any = document.getElementById("frame"); //Finds the iframe element from the HTML document
       var loadedDocument = (x.contentWindow || x.contentDocument);
-      this.paragraphs = loadedDocument.document.querySelectorAll('span');
+      this.paragraphs = loadedDocument.document.querySelectorAll('span'); //puts all elements that are between <span> in an array
       
-      x.style.height = loadedDocument.document.body.scrollHeight + 'vh';
+      //This part scales the iframe to fit on the screen:
+      x.style.height = loadedDocument.document.body.scrollHeight + 'vh'; 
       var scaleVar = (loadedDocument.document.body.scrollHeight/2750);
       console.log(loadedDocument.document.body.scrollWidth);
 
@@ -79,6 +80,7 @@ export class TemplateComponent implements OnInit {
       this.headings = loadedDocument.document.querySelectorAll('h1:not(.editor),h2:not(.editor),h3:not(.editor),h4:not(.editor),h5:not(.editor),h6:not(.editor)');
 
 
+      //Hides the selector parts from the view:
       this.selectorParts = document.getElementById("selector-parts")
       this.selectorParts.remove();
       this.editorParts.style.display = 'initial';
